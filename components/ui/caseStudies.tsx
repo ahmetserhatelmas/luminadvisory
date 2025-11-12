@@ -1,0 +1,180 @@
+'use client'; // <-- CRITICAL: This enables event handlers and hooks
+import React, { useRef, useState, useEffect } from 'react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+
+export default function CaseStudiesSection() {
+  const scrollContainerRef = useRef(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
+
+  const checkScrollability = () => {
+    const container = scrollContainerRef.current;
+    if (container) {
+      setCanScrollLeft(container.scrollLeft > 0);
+      setCanScrollRight(
+        container.scrollLeft < container.scrollWidth - container.clientWidth - 10
+      );
+    }
+  };
+
+  useEffect(() => {
+    checkScrollability();
+    window.addEventListener('resize', checkScrollability);
+    return () => window.removeEventListener('resize', checkScrollability);
+  }, []);
+
+  const scroll = (direction) => {
+    const container = scrollContainerRef.current;
+    if (container) {
+      const scrollAmount = 350;
+      container.scrollBy({
+        left: direction === 'left' ? -scrollAmount : scrollAmount,
+        behavior: 'smooth'
+      });
+      setTimeout(checkScrollability, 300);
+    }
+  };
+
+  return (
+    <section id="case-studies" className="border-t border-slate-200 bg-white py-10">
+      <div className="mx-auto max-w-7xl px-6 py-16">
+        <h2 className="text-3xl font-semibold">Case Studies</h2>
+        <p className="mt-2 text-slate-600">
+          Real-world examples of how our methods drive measurable outcomes.
+        </p>
+
+        {/* Scroll container with arrows */}
+        <div className="relative mt-8">
+          {/* Left Arrow */}
+          <button
+            onClick={() => scroll('left')}
+            disabled={!canScrollLeft}
+            className={`absolute left-0 top-1/2 -translate-y-1/2 z-10 h-10 w-10 rounded-full bg-white shadow-lg border border-slate-200 flex items-center justify-center transition-all duration-300 ${
+              canScrollLeft
+                ? 'opacity-100 hover:bg-emerald-50 hover:border-emerald-300 hover:shadow-xl'
+                : 'opacity-0 pointer-events-none'
+            }`}
+            aria-label="Scroll left"
+    >
+            <ChevronLeft className="h-5 w-5 text-emerald-700" />
+          </button>
+
+          {/* Scrollable container */}
+          <div
+            ref={scrollContainerRef}
+            onScroll={checkScrollability}
+            className="flex space-x-6 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide"
+            style={{
+              scrollbarWidth: 'none',
+              msOverflowStyle: 'none'
+            }}
+          >
+
+            {/* Case Study 1 */}
+            <article className="mid:grid-cols-2 max-w-sm snap-start rounded-2xl border border-slate-200 bg-slate-50 p-6 shadow-sm flex-shrink-0 hover:shadow-md transition-shadow">
+              <h2 className="text-lg font-semibold text-emerald-700">
+                Case Study 1: PCF for Operational Efficiency in Semi-Finished Goods
+              </h2>
+              <p className="mt-4 text-sm text-slate-700">
+                <b>Context:</b> : A mid-tier industrial supplier, specializing in engineered metal components,
+                 needed ISO 14067-aligned cradle-to-gate Product Carbon Footprints (PCFs) for a portfolio of 
+                 11 semi-finished products. The goal was twofold: meet increasing OEM disclosure demands 
+                 and identify internal cost-reduction opportunities through decarbonization.
+              </p>
+              <p className="mt-3 text-sm text-slate-700">
+                <b>Project &amp; Findings:</b>The project delivered verified PCFs within eight weeks, 
+                focusing on mass-balancing and high-quality secondary datasets to address data gaps. 
+                The project delivered verified PCFs within eight weeks, focusing on mass-balancing and 
+                high-quality secondary datasets to address data gaps. Initial data coverage was low but 
+                was rapidly expanded, providing high-fidelity results. The analysis pinpointed 
+                the single largest hotspot to an inefficient energy recovery system in a 
+                high-temperature finishing process.Initial data coverage was low but was rapidly expanded,
+                 providing high-fidelity results. The analysis pinpointed the single largest hotspot to an 
+                 inefficient energy recovery system in a high-temperature finishing process.
+              </p>
+              <p className="mt-3 text-sm text-slate-700">
+                <b>Results &amp; Impact:</b> By optimizing the identified hotspot, the supplier realized
+                 a reduction on a priority product stream, directly linked to significant energy savings 
+                 (and lower operating costs). Furthermore, the robust, verified data enabled the supplier
+                  to present a compelling narrative, resulting in first-pass OEM acceptance with
+                   zero corrective actions and demonstrating a competitive advantage: their components 
+                   were shown to have a lower carbon intensity compared to key market competitors.
+              </p>
+            </article>
+
+            {/* Case Study 2 */}
+            <article className=" max-w-sm snap-start rounded-2xl border border-slate-200 bg-slate-50 p-6 shadow-sm flex-shrink-0 hover:shadow-md transition-shadow">
+              <h2 className="text-lg font-semibold text-emerald-700">
+                Case Study 2: ESG Risk Mitigation in a Trade Commodity Supply Chain
+              </h2>
+              <p className="mt-4 text-sm text-slate-700">
+                <b>Context: </b> A global commodity trading house, sourcing battery materials like cobalt and 
+                nickel, faced increasing financial and reputational exposure due to complex supply chains, 
+                ambiguous provenance, and evolving regulations concerning labor and conflict minerals.
+              </p>
+              <p className="mt-3 text-sm text-slate-700">
+                <b>Project &amp; Findings:</b> A bespoke, route-specific ESG risk model was developed and embedded into the
+                 firm’s sourcing and pricing strategy. The model combined raw data on provenance, processing chain complexity, 
+                 climate transition exposure, and real-time controversy screens. This quantitative approach shifted
+                supplier evaluation from subjective auditing to verifiable data points.
+              </p>
+              <p className="mt-3 text-sm text-slate-700">
+                <b>Results &amp; Impact:</b> : The strategic implementation allowed the firm to significantly reduce
+                 its exposure, achieving a cut in high-risk volume without sacrificing overall supply capacity. 
+                 The immediate financial benefit was realized through ESG-linked clauses in term sheets, 
+                 which recovered in pricing premiums on compliant, verified routes. Crucially, 
+                 the model's early warning capabilities averted a disruption risk of {"$\\approx\\text{\\euro}3.4\\text{m}$"} by 
+                 flagging a smelter that was subsequently sanctioned. The system also drastically streamlined compliance,
+                  shrinking the KYC/ESG pack turnaround time for suppliers from 12 days to 3.
+              </p>
+            </article>
+
+            {/* Case Study 3 */}
+            <article className=" max-w-sm snap-start rounded-2xl border border-slate-200 bg-slate-50 p-6 shadow-sm flex-shrink-0 hover:shadow-md transition-shadow">
+              <h2 className="text-lg font-semibold text-emerald-700">
+                Case Study 3: LCA-Driven Design Change for High Voltage Switchgear
+              </h2>
+              <p className="mt-4 text-sm text-slate-700">
+                <b>Context:</b> A major high voltage (HV) equipment manufacturer sought to future-proof its product
+                 line by quantifying the environmental impacts of its {"$130\\text{kV}$"} 
+                 Gas-Insulated Switchgear (GIS), especially in light of tightening regulations on 
+                 potent greenhouse gases.
+              </p>
+              <p className="mt-3 text-sm text-slate-700">
+                <b>Project &amp; Findings:</b> The LCA, conducted in accordance with ISO 14044 (Cradle-to-Grave),
+                 confirmed that for this type of equipment, the most severe impact did not stem from raw 
+                 material production or electrical losses, but from the potential losses durıng use. 
+              </p>
+              <p className="mt-3 text-sm text-slate-700">
+                <b>Results &amp; Impact:</b> The LCA results provided irrefutable data for a strategic product
+                 pivot. The company rapidly accelerated the launch of an alternative desıgn and loss prevention.
+                  A subsequent comparative LCA showed that the new design achieved a reduction in climate impact 
+                  potential, successfully transferring the environmental burden away from the use phase. 
+              </p>
+            </article>
+          </div>
+
+          {/* Right Arrow */}
+          <button
+            onClick={() => scroll('right')}
+            disabled={!canScrollRight}
+            className={`absolute right-0 top-1/2 -translate-y-1/2 z-10 h-10 w-10 rounded-full bg-white shadow-lg border border-slate-200 flex items-center justify-center transition-all duration-300 ${
+              canScrollRight
+                ? 'opacity-100 hover:bg-emerald-50 hover:border-emerald-300 hover:shadow-xl'
+                : 'opacity-0 pointer-events-none'
+            }`}
+            aria-label="Scroll right"
+          >
+            <ChevronRight className="h-5 w-5 text-emerald-700" />
+          </button>
+        </div>
+      </div>
+
+      <style jsx>{`
+        .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+        }
+      `}</style>
+    </section>
+  );
+}
