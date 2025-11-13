@@ -17,6 +17,7 @@ import { Menu, X } from "lucide-react";
 export default function Page() {
   return (
     <main className="min-h-screen bg-white text-slate-900">
+      <link rel="icon" type="image/x-icon" href="/Lumin_logo.png" />
       {/* Header (Updated CTA) */}
       <Header />
 
