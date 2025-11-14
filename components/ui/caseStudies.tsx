@@ -36,7 +36,7 @@ export default function CaseStudiesSection() {
   };
 
   return (
-    <section id="case-studies" className="border-t border-slate-200 bg-white py-10">
+    <section id="case-studies" className="border-t border-slate-200 bg-white ">
       <div className="mx-auto max-w-7xl px-6 py-16">
         <h2 className="text-3xl font-semibold">Case Studies</h2>
         <p className="mt-2 text-slate-600">

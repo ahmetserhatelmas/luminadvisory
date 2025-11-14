@@ -3,11 +3,11 @@ import "./globals.css";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Lumin Advisory — ESG, LCA, Scope 3 & Critical Minerals",
+  title: "Lumin Advisory — Science‑Driven Sustainability Advisory",
   description:
-    "ESG strategy & assurance, LCA/EPD/PCF, Scope 3 carbon intelligence, and critical minerals supply chains for industry and tech.",
+    "Science‑Driven Sustainability Advisory for Industry and Tech.",
   metadataBase: new URL("https://lumin-advisory.vercel.app"), // update after deploy / domain connected
-  icons: { icon: "/favicon.ico" },
+  icons: { icon: "/Lumin_logo_1.png" },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

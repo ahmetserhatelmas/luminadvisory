@@ -7,7 +7,7 @@ export default function Insights() {
 
     return (
         // Insights Section
-        <section id="insights" className="border-t border-slate-200 bg-white py-10">
+        <section id="insights" className="border-t border-slate-200 bg-white">
             <div className="mx-auto max-w-7xl px-6 py-16">
                 <h2 className="text-3xl font-semibold">Insights</h2>
                 <p className="mt-2 text-slate-600">
