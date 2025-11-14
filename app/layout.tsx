@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: "Lumin Advisory — Science‑Driven Sustainability Advisory",
   description:
     "Science‑Driven Sustainability Advisory for Industry and Tech.",
-  metadataBase: new URL("https://lumin-advisory.vercel.app"), // update after deploy / domain connected
+  metadataBase: new URL("https://luminsustainability.com"), // update after deploy / domain connected
   icons: { icon: "favicon-32x32" },
 };
 
