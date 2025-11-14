@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description:
     "Science‑Driven Sustainability Advisory for Industry and Tech.",
   metadataBase: new URL("https://luminsustainability.com"), // update after deploy / domain connected
-  icons: { icon: "/icon.ico" },
+  icons: { icon: "icon.ico" },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
