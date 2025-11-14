@@ -131,19 +131,5 @@ CONTACT_FROM=contact@yourdomain.com
 
 ---
 
-## Custom Domain & Email
 
-You're using `luminsustainability.com` with Vercel.
-
-For custom email:
-
-* You can use **ImprovMX (free)** for forwarding
-* Or use **Zoho / Google Workspace** for full inbox access
-
-If you're using **Resend** for sending emails:
-
-* Make sure your domain is verified
-* Add the TXT, MX, and CNAME records they provide to your **Vercel DNS** settings
-
----
 
