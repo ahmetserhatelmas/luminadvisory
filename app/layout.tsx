@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description:
     "Science‑Driven Sustainability Advisory for Industry and Tech.",
   metadataBase: new URL("https://lumin-advisory.vercel.app"), // update after deploy / domain connected
-  icons: { icon: "icon.ico" },
+  icons: { icon: "favicon-32x32" },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
