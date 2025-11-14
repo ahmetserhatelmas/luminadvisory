@@ -2,10 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground: 20 14% 4%;
-  --background: 0 0% 100%;
-}
+
 html, body {
   height: 100%;
 }
