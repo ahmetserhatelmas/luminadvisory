@@ -13,39 +13,39 @@ import {
 export default function About() {
   const steps = [
     {
-      title: "Diagnose",
-      blurb: "Clarify goals, material risks, and policy exposure."
+      title: "DIAGNOSE",
+      blurb: "Define the landscape. We clarify your sustainability goals, identify material risks, and map your policy exposure."
     },
     {
-      title: "Quantify",
+      title: "QUANTIFY",
       blurb:
-        "Build LCA/PCF, GHG baselines, CRM & circularity models using best-available data and standards."
+        "Model the metrics. We build LCA/PCF, GHG baselines, and Critical Raw Material (CRM) & circularity models using best-available data and standards."
     },
     {
-      title: "Decide",
+      title: "DECIDE",
       blurb:
-        "Turn results into roadmaps—abatement levers, cost/impact trade-offs, and governance."
+        "Build the roadmap. We turn complex data into strategy—identifying abatement levers, calculating cost/impact trade-offs, and establishing governance."
     },
     {
-      title: "Verify",
+      title: "VERIFY",
       blurb:
-        "Package evidence for customers, tenders, and auditors (EPD/ESRS/Green Claims-ready)."
+        "Prove the value. We package audit-ready evidence for customers and tenders (EPD, ESRS, and Green Claims Directive compliant)."
     }
   ];
 
   return (
-    <section id="about" className="border-t border-slate-200 bg-emerald-50 py-16">
+    <section id="how-we-work" className="border-t border-slate-200 bg-emerald-50 py-16">
       <div className="mx-auto max-w-7xl px-6">
         <header className="mb-12 text-center">
-          <h2 className="text-4xl font-bold tracking-tight text-emerald-900">Our Story</h2>
+          <h2 className="text-4xl font-bold tracking-tight text-emerald-900">How We Work</h2>
           <p className="mt-4 text-lg text-slate-700 max-w-3xl mx-auto">
             We bring science into decision-making. Lumin exists to close the gap between rigorous
-            environmental analytics and real-world business choices. Our added value is simple:
-            a perspective backed by data and domain expertise so you can make robust, auditable
-            decisions—faster, with less risk, and more impact.
+            environmental analytics and real-world business choices. We provide data-backed insights 
+            and domain expertise, empowering you to make robust, auditable decisions—faster, with less 
+            risk, and more impact.
           </p>
           <h2 className="mt-8 text-2xl font-semibold tracking-tight text-emerald-800">
-            Diagnose → Quantify → Decide → Verify
+            The Lumin Framework
           </h2>
         </header>
 

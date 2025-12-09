@@ -11,35 +11,57 @@ export default function Footer() {
         <div className="mx-auto max-w-7xl px-6 py-12">
             {/* Top row — links and info */}
             <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-            {/* Legal */}
+            {/* LEGAL (RECHTLICHES) */}
             <div>
-                <h3 className="text-sm font-semibold text-slate-900 uppercase tracking-wide">Legal</h3>
-                <ul className="mt-3 space-y-1 text-sm text-slate-600">
-                <li><a href="/#" className="hover:text-emerald-700">Privacy Policy</a></li>
-                <li><a href="/#" className="hover:text-emerald-700">Terms of Service</a></li>
-                <li><a href="/#" className="hover:text-emerald-700">Imprint (DE)</a></li>
+                <h3 className="text-sm font-semibold text-slate-900 uppercase tracking-wide">Legal (Rechtliches)</h3>
+                <ul className="mt-3 space-y-2 text-sm text-slate-600">
+                <li><a href="/imprint" className="hover:text-emerald-700">Imprint (Impressum)</a></li>
+                <li><a href="/privacy" className="hover:text-emerald-700">Privacy Policy (Datenschutz)</a></li>
+                <li><a href="/terms" className="hover:text-emerald-700">Terms of Service (AGB)</a></li>
                 <li><button className="hover:text-emerald-700">Cookie Settings</button></li>
                 </ul>
+                <div className="mt-4 text-xs text-slate-500 space-y-1">
+                <p><strong>Email:</strong> hello@luminsustainability.com</p>
+                <p><strong>Address:</strong> Von-der-Heydt Str. 1, 10785 Berlin</p>
+                <p><strong>VAT ID:</strong> [TBD]</p>
+                </div>
             </div>
 
-            {/* Company */}
+            {/* COMPANY */}
             <div>
                 <h3 className="text-sm font-semibold text-slate-900 uppercase tracking-wide">Company</h3>
-                <ul className="mt-3 space-y-1 text-sm text-slate-600">
-                <li>Registered Business</li>
-                <li>Rotterdam – Berlin – Istanbul</li>
-                <li><a href="/#" className="hover:text-emerald-700">Careers</a></li>
-                <li><a href="/#" className="hover:text-emerald-700">Press Kit</a></li>
+                <ul className="mt-3 space-y-2 text-sm text-slate-600">
+                <li className="font-semibold text-slate-900">Lumin Advisory</li>
+                <li>Sustainability Strategy UG</li>
+                <li>(haftungsbeschränkt)</li>
+                <li className="pt-2"><strong>Berlin HQ:</strong></li>
+                <li>Von-der-Heydt Str. 1</li>
+                <li>10785 Berlin, Germany</li>
+                <li className="pt-2"><strong>Offices:</strong></li>
+                <li>Berlin – Istanbul – Rotterdam</li>
+                <li className="pt-2"><a href="/careers" className="hover:text-emerald-700 font-medium">Careers</a></li>
                 </ul>
             </div>
 
-            {/* Newsletter */}
-            <div className="sm:col-span-2">
+            {/* REGISTRATION */}
+            <div>
+                <h3 className="text-sm font-semibold text-slate-900 uppercase tracking-wide">Registration</h3>
+                <ul className="mt-3 space-y-2 text-sm text-slate-600">
+                <li>Amtsgericht</li>
+                <li>Berlin-Charlottenburg</li>
+                <li className="pt-2"><strong>HRB:</strong> [TBD]</li>
+                <li className="pt-2"><strong>Managing Director:</strong></li>
+                <li>Dr. Arda Işıldar</li>
+                </ul>
+            </div>
+
+            {/* STAY CONNECTED */}
+            <div>
                 <h3 className="text-sm font-semibold text-slate-900 uppercase tracking-wide">Stay Connected</h3>
                 <p className="mt-3 text-sm text-slate-600">
                 Sign up for sustainability insights and updates.
                 </p>
-                <form className="mt-4 flex max-w-md gap-2">
+                <form className="mt-4 flex flex-col gap-2">
                 <input
                     type="email"
                     placeholder="Enter your email"
@@ -54,7 +76,7 @@ export default function Footer() {
                 </form>
                 <div className="mt-4">
                 <a
-                    href="https://www.linkedin.com/company/lumin-advisory" // Hello change your linkedin plase
+                    href="https://www.linkedin.com/company/lumin-advisory"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 text-sm text-slate-600 hover:text-emerald-700"
@@ -78,11 +100,11 @@ export default function Footer() {
 
             {/* Bottom row — copyright */}
             <div className="flex flex-col items-center justify-between gap-2 text-sm text-slate-500 sm:flex-row">
-            <p>© {new Date().getFullYear()} Lumin Advisory. All rights reserved.</p>
+            <p>© {new Date().getFullYear()} Lumin Advisory UG. All rights reserved. | Berlin, Germany</p>
             <p>Science-driven sustainability advisory.</p>
             </div>
         </div>
         </footer>
         </div>
     );
-}   
+}

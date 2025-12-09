@@ -11,56 +11,39 @@ export default function ServicePillars() {
     {
       id: "pillar-climate-change",
       icon: <CloudLightning className="h-6 w-6" />,
-      title: "Climate Change Risk & Decarbonization Strategy",
-      description: [
-        "Purpose: Turn climate targets into measurable, science-based action plans.",
-        "Build verified Scope 1–3 baseline, resolve hotspots, set science-aligned targets (SBTi).",
-        "Convert baseline into execution via MACCs, scenario analysis, cost-impact trade-offs.",
-        "Align risk assessments with TCFD, ESRS, and IFRS S2."
-      ],
+      title: "Climate Strategy & Decarbonization",
+      subtitle: "GHG Accounting · Decarbonization · Climate Risk Assessment",
+      description:
+        "Turn ambition into verified action. We build audit-ready GHG inventories (Scope 1–3) and design science-based decarbonization roadmaps. By quantifying physical and transition risks, we ensure your climate strategy is financially resilient, compliant with SBTi standards, and ready for scrutiny by investors and auditors.",
       bgColor: "bg-yellow-50"
     },
     {
-      id: "pillar-life-cycle",
+      id: "pillar-sustainable-products",
       icon: <BookOpen className="h-6 w-6" />,
-      title: "Life Cycle Assessments (LCA) & Product Carbon Footprints (PCF)",
-      description: [
-        "Backing up strategic decisions with sustainability science.",
-        "Purpose: Quantify product and value-chain impacts using best-available science.",
-        "Full LCA using cradle-to-gate or cradle-to-grave; PCF aligned to ISO 14067 & GHG Protocol.",
-        "Advisory with SOPs, QA templates, repeatable and audit-ready models.",
-        "Empower design, innovation, and transparent communication."
-      ],
+      title: "Sustainable Products",
+      subtitle: "LCA, PCF and verification services",
+      description:
+        "We quantify the environmental footprint of your products using ISO-aligned LCA and Product Carbon Footprint methods. From screening studies to customer-facing EPDs, we translate complex models into clear claims and reduction roadmaps. We also support third-party verification, data collection, and supplier engagement to strengthen your product sustainability story.",
       bgColor: "bg-sky-50"
     },
     {
       id: "pillar-critical-raw",
       icon: <Globe2 className="h-6 w-6" />,
-      title: "Critical Raw Materials (CRM) Governance & Circularity Assessments",
-      description: [
-        "Heat-map CRM exposure by material, geography, and supplier.",
-        "Model material circularity, design-for-disassembly, recovery yields.",
-        "Use CRM data to test scenarios (recycling, reuse, substitution, dual-sourcing).",
-        "Translate into sourcing strategy under policy, price, tech stress-tests."
-      ],
+      title: "Critical Raw Materials Intelligence",
+      subtitle: "CRM Supply & Demand · Sourcing",
+      description:
+        "Secure your supply chain against volatility. We analyze Critical Raw Material (CRM) exposure, modeling supply, demand, and circularity risks specific to your materials. Our intelligence supports strategic sourcing decisions, helping you navigate geopolitical constraints and price fluctuations while optimizing material recovery and resilience.",
       bgColor: "bg-purple-50"
     },
     {
       id: "pillar-esg-strategy",
       icon: <BarChart2 className="h-6 w-6" />,
-      title: "ESG Strategy, Risk Assessment & Reporting",
-      description: [
-        "Keep up with the regulatory and market demands.",
-        "Purpose: Transform sustainability regulation into actionable strategy.",
-        "We support companies in navigating the new generation of EU sustainability laws — CBAM, ESR, ESRS, CSDDD, ESPR.",
-        "A robust ESG strategy backed by data and policy insight — something your board, auditors, and investors can stand behind.",
-        "For SMEs: proportionate and practical ESG — baseline GHG, KPI dashboards, supplier data templates, due-diligence workflows."
-      ],
+      title: "ESG Strategy & Regulatory Alignment",
+      subtitle: "EU Regulation compliance; CSRD, CBAM, CSDDD, ESPR, Green Claims",
+      description:
+        "Navigate the EU regulatory landscape with confidence. We translate complex obligations like CSRD, CBAM, CSDDD, and ESPR into operational workflows. From double materiality assessments to defensible Green Claims, we build data-backed ESG strategies that ensure compliance, streamline reporting, and withstand the rigor of external audits.",
       bgColor: "bg-emerald-50"
     },
-    
-    
-    
   ];
 
   return (
@@ -80,11 +63,12 @@ export default function ServicePillars() {
                 <div className="grid h-10 w-10 place-items-center rounded-xl bg-emerald-600 text-white">
                   {section.icon}
                 </div>
-                <h1 className="text-lg font-semibold">{section.title}</h1>
+                <div className="flex-1">
+                  <h1 className="text-lg font-semibold">{section.title}</h1>
+                  <p className="text-xs text-slate-600 mt-1">{section.subtitle}</p>
+                </div>
               </div>
-              {section.description.map((line, i) => (
-                <p key={i} className="mt-2 text-sm text-slate-700 leading-relaxed">{line}</p>
-              ))}
+              <p className="mt-3 text-sm text-slate-700 leading-relaxed">{section.description}</p>
             </div>
           ))}
         </div>

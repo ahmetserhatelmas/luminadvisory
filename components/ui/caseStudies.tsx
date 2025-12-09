@@ -1,9 +1,9 @@
-'use client'; // <-- CRITICAL: This enables event handlers and hooks
+'use client';
 import React, { useRef, useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 export default function CaseStudiesSection() {
-  const scrollContainerRef = useRef(null);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
 
@@ -23,7 +23,7 @@ export default function CaseStudiesSection() {
     return () => window.removeEventListener('resize', checkScrollability);
   }, []);
 
-  const scroll = (direction) => {
+  const scroll = (direction: 'left' | 'right') => {
     const container = scrollContainerRef.current;
     if (container) {
       const scrollAmount = 350;
@@ -71,85 +71,76 @@ export default function CaseStudiesSection() {
           >
 
             {/* Case Study 1 */}
-            <article className="mid:grid-cols-2 max-w-sm snap-start rounded-2xl border border-slate-200 bg-slate-50 p-6 shadow-sm flex-shrink-0 hover:shadow-md transition-shadow">
+            <article id="case-1" className="mid:grid-cols-2 max-w-sm snap-start rounded-2xl border border-slate-200 bg-slate-50 p-6 shadow-sm flex-shrink-0 hover:shadow-md transition-shadow">
               <h2 className="text-lg font-semibold text-emerald-700">
-                Case Study 1: PCF for Operational Efficiency in Semi-Finished Goods
+                Case Study 1: PCF of Semi-Finished Goods
               </h2>
               <p className="mt-4 text-sm text-slate-700">
-                <b>Context:</b> : A mid-tier industrial supplier, specializing in engineered metal components,
+                <b>Context:</b> A mid-tier industrial supplier, specializing in engineered metal components,
                  needed ISO 14067-aligned cradle-to-gate Product Carbon Footprints (PCFs) for a portfolio of 
                  11 semi-finished products. The goal was twofold: meet increasing OEM disclosure demands 
                  and identify internal cost-reduction opportunities through decarbonization.
               </p>
               <p className="mt-3 text-sm text-slate-700">
-                <b>Project &amp; Findings:</b>The project delivered verified PCFs within eight weeks, 
+                <b>Project &amp; Findings:</b> The project delivered verified PCFs within eight weeks, 
                 focusing on mass-balancing and high-quality secondary datasets to address data gaps. 
-                The project delivered verified PCFs within eight weeks, focusing on mass-balancing and 
-                high-quality secondary datasets to address data gaps. Initial data coverage was low but 
-                was rapidly expanded, providing high-fidelity results. The analysis pinpointed 
-                the single largest hotspot to an inefficient energy recovery system in a 
-                high-temperature finishing process.Initial data coverage was low but was rapidly expanded,
-                 providing high-fidelity results. The analysis pinpointed the single largest hotspot to an 
-                 inefficient energy recovery system in a high-temperature finishing process.
+                While initial data coverage was low, it was rapidly expanded to provide high-fidelity results. 
+                The analysis pinpointed the single largest hotspot: an inefficient energy recovery system in a 
+                high-temperature finishing process.
               </p>
               <p className="mt-3 text-sm text-slate-700">
                 <b>Results &amp; Impact:</b> By optimizing the identified hotspot, the supplier realized
-                 a reduction on a priority product stream, directly linked to significant energy savings 
-                 (and lower operating costs). Furthermore, the robust, verified data enabled the supplier
+                 a measurable carbon reduction on a priority product stream, directly linked to significant energy savings 
+                 and lower operating costs. Furthermore, the robust, verified data enabled the supplier
                   to present a compelling narrative, resulting in first-pass OEM acceptance with
-                   zero corrective actions and demonstrating a competitive advantage: their components 
-                   were shown to have a lower carbon intensity compared to key market competitors.
+                   zero corrective actions. The supplier successfully demonstrated a competitive advantage, 
+                   proving their components hold a lower carbon intensity than key market competitors.
               </p>
             </article>
 
             {/* Case Study 2 */}
-            <article className=" max-w-sm snap-start rounded-2xl border border-slate-200 bg-slate-50 p-6 shadow-sm flex-shrink-0 hover:shadow-md transition-shadow">
+            <article id="case-2" className=" max-w-sm snap-start rounded-2xl border border-slate-200 bg-slate-50 p-6 shadow-sm flex-shrink-0 hover:shadow-md transition-shadow">
               <h2 className="text-lg font-semibold text-emerald-700">
-                Case Study 2: ESG Risk Mitigation in a Trade Commodity Supply Chain
+                Case Study 2: Scope 3 Accounting and Supplier Engagement
               </h2>
               <p className="mt-4 text-sm text-slate-700">
-                <b>Context: </b> A global commodity trading house, sourcing battery materials like cobalt and 
-                nickel, faced increasing financial and reputational exposure due to complex supply chains, 
-                ambiguous provenance, and evolving regulations concerning labor and conflict minerals.
+                <b>Context:</b> A global manufacturing player committed to the Science Based Targets initiative (SBTi) 
+                but lacked granular visibility into its supply chain (Scope 3), which accounted for &gt;80% of total emissions. 
+                Reliance on spend-based estimates was masking critical hotspots and preventing actionable reduction strategies.
               </p>
               <p className="mt-3 text-sm text-slate-700">
-                <b>Project &amp; Findings:</b> A bespoke, route-specific ESG risk model was developed and embedded into the
-                 firm’s sourcing and pricing strategy. The model combined raw data on provenance, processing chain complexity, 
-                 climate transition exposure, and real-time controversy screens. This quantitative approach shifted
-                supplier evaluation from subjective auditing to verifiable data points.
+                <b>Project &amp; Approach:</b> We deployed a tiered supplier engagement strategy combined with a hybrid calculation methodology.
+                <br/><b>Screening:</b> Conducted a materiality assessment to identify the top suppliers contributing to 70% of emissions.
+                <br/><b>Engagement:</b> Launched a targeted data collection campaign, moving key suppliers from generic spend-based 
+                factors to physical intensity data (e.g., kgCO2e/kg product).
+                <br/><b>Capacity Building:</b> Delivered workshops to upskill suppliers on GHG accounting and roadmap creation.
               </p>
               <p className="mt-3 text-sm text-slate-700">
-                <b>Results &amp; Impact:</b> : The strategic implementation allowed the firm to significantly reduce
-                 its exposure, achieving a cut in high-risk volume without sacrificing overall supply capacity. 
-                 The immediate financial benefit was realized through ESG-linked clauses in term sheets, 
-                 which recovered in pricing premiums on compliant, verified routes. Crucially, 
-                 the model's early warning capabilities averted a disruption risk of {"$\\approx\\text{\\euro}3.4\\text{m}$"} by 
-                 flagging a smelter that was subsequently sanctioned. The system also drastically streamlined compliance,
-                  shrinking the KYC/ESG pack turnaround time for suppliers from 12 days to 3.
+                <b>Results &amp; Impact:</b> The transition to primary data identified that actual emissions were 22% lower than 
+                initial estimates, allowing for a re-baselining of targets. The company successfully validated its near-term targets 
+                with the SBTi. Crucially, the program secured commitments from 65% of strategic suppliers to set their own renewable 
+                energy targets within 24 months, significantly de-risking the client's long-term transition plan.
               </p>
             </article>
 
             {/* Case Study 3 */}
-            <article className=" max-w-sm snap-start rounded-2xl border border-slate-200 bg-slate-50 p-6 shadow-sm flex-shrink-0 hover:shadow-md transition-shadow">
+            <article id="case-3" className=" max-w-sm snap-start rounded-2xl border border-slate-200 bg-slate-50 p-6 shadow-sm flex-shrink-0 hover:shadow-md transition-shadow">
               <h2 className="text-lg font-semibold text-emerald-700">
-                Case Study 3: LCA-Driven Design Change for High Voltage Switchgear
+                Case Study 3: Critical Raw Materials Analysis for Gallium &amp; Germanium
               </h2>
               <p className="mt-4 text-sm text-slate-700">
-                <b>Context:</b> A major high voltage (HV) equipment manufacturer sought to future-proof its product
-                 line by quantifying the environmental impacts of its {"$130\\text{kV}$"} 
-                 Gas-Insulated Switchgear (GIS), especially in light of tightening regulations on 
-                 potent greenhouse gases.
+                <b>Context:</b> High dependency on Gallium &amp; Germanium for semiconductor/optical products. 
+                Supply chain critically vulnerable due to &gt;90% concentration in a single region (China) and 
+                active export controls.
               </p>
               <p className="mt-3 text-sm text-slate-700">
-                <b>Project &amp; Findings:</b> The LCA, conducted in accordance with ISO 14044 (Cradle-to-Grave),
-                 confirmed that for this type of equipment, the most severe impact did not stem from raw 
-                 material production or electrical losses, but from the potential losses durıng use. 
+                <b>Project and Findings:</b> Conducted deep-dive market analysis identifying single-source risks. 
+                Developed a "China Plus One" multisourcing strategy and validated secondary supply streams via 
+                high-purity recycling.
               </p>
               <p className="mt-3 text-sm text-slate-700">
-                <b>Results &amp; Impact:</b> The LCA results provided irrefutable data for a strategic product
-                 pivot. The company rapidly accelerated the launch of an alternative desıgn and loss prevention.
-                  A subsequent comparative LCA showed that the new design achieved a reduction in climate impact 
-                  potential, successfully transferring the environmental burden away from the use phase. 
+                <b>Results and Impact:</b> Mitigated immediate supply disruption risks. Avoided &gt;40% spot market 
+                price surges and secured long-term compliance with critical mineral regulations.
               </p>
             </article>
           </div>

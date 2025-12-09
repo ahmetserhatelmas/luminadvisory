@@ -8,23 +8,23 @@ export default function HeroSection() {
   const serviceItems = [
     {
       id: 'pillar-climate-change',
-      title: 'Climate Change Risk and Decarbonization Strategy',
-      desc: 'Scope 1–3, SBTi-aligned pathways',
+      title: 'Climate Strategy & Decarbonization',
+      desc: 'GHG Accounting · Decarbonization · Climate Risk Assessment',
     },
     {
-      id: 'pillar-life-cycle',
-      title: 'Life Cycle Assessments (LCA) & Product Carbon Footprints (PCF)',
-      desc: 'LCA, PCF, EPD',
+      id: 'pillar-sustainable-products',
+      title: 'Sustainable Products',
+      desc: 'LCA, PCF and verification services',
     },
     {
       id: 'pillar-critical-raw',
-      title: 'Critical Raw Materials Governance & Circularity Assessments',
-      desc: 'Copper · Al · REE',
+      title: 'Critical Raw Materials Intelligence',
+      desc: 'CRM Supply & Demand · Sourcing',
     },
     {
       id: 'pillar-esg-strategy',
-      title: 'ESG Strategy, Risk Assessment & Reporting',
-      desc: 'ESG Procedures & Reporting',
+      title: 'ESG Strategy & Regulatory Alignment',
+      desc: 'EU Regulation compliance; CSRD, CBAM, CSDDD, ESPR, Green Claims',
     },
   ];
 
@@ -48,7 +48,7 @@ export default function HeroSection() {
                 transition={{ delay: 0.3 }}
                 className="text-2xl sm:text-3xl font-semibold leading-tight text-emerald-700 mt-3"
                 >
-                We help companies give decisions backed by sustainability science.
+                Turn Ambition into Impact with Science-Driven Sustainability.
                 </motion.h2>
 
 
@@ -58,7 +58,7 @@ export default function HeroSection() {
             transition={{ delay: 0.5 }}
             className="mt-5 max-w-xl text-base sm:text-lg text-slate-600"
           >
-            Lumin Advisory helps its business partners make ESG decisions backed by science. We offer service pillars around Science Driven Sustainability Advisory—so you can move from targets to tangible outcomes.
+            Lumin Advisory empowers businesses to navigate complex ESG landscapes with confidence. We provide rigorous, science-driven advisory services that bridge the gap between ambitious targets and tangible, data-backed outcomes.
           </motion.p>
 
           <motion.div
@@ -83,9 +83,9 @@ export default function HeroSection() {
             transition={{ type: 'spring', stiffness: 300 }}
             className="rounded-2xl border border-slate-200 p-6 shadow-sm bg-white"
           >
-            <p className="font-medium text-lg text-emerald-700">Clarity Meets Technical Depth</p>
+            <p className="font-medium text-lg text-emerald-700">Technical Depth. Strategic Focus.</p>
             <p className="mt-2 text-slate-600 text-sm">
-              We combine rigorous LCA and carbon accounting standards with strategic clarity, giving leaders the decision-ready insights needed for investment and compliance.
+              We turn rigorous ESG data into clear, actionable strategy—giving decision-givers the confidence they need to drive value.
             </p>
           </motion.div>
 
