@@ -19,14 +19,14 @@ export default function Header() {
         { label: "Our Principles", href: "#principles" },
         { label: "How We Work", href: "#how-we-work" },
         { label: "Who We Are", href: "#who-we-are" },
-        { label: "Where we work", href: "#where-we-work" },
+        { label: "Where We Work", href: "#where-we-work" },
       ],
     },
     {
       label: "SERVICE PILLARS",
       items: [
+        { label: "Climate Change & Decarbonization", href: "#pillar-climate-change" },
         { label: "Sustainable products", href: "#pillar-sustainable-products" },
-        { label: "Climate change & decarbonization", href: "#pillar-climate-change" },
         { label: "ESG Regulatory Compliance", href: "#pillar-esg-strategy" },
         { label: "Critical Raw Materials (CRM) intelligence", href: "#pillar-critical-raw" },
       ],
@@ -34,9 +34,9 @@ export default function Header() {
     {
       label: "CASE STUDIES",
       items: [
-        { label: "LCA of Semiconductors", href: "#case-1" },
         { label: "CBAM Calculator of Steel Products", href: "#case-2" },
         { label: "Scope 3 and supplier engagement", href: "#case-3" },
+        { label: "LCA of Semiconductors", href: "#case-1" },
       ],
     },
     {
