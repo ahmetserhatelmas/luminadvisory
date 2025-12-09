@@ -10,6 +10,21 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
 
+  const handleScrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const targetId = href.replace('#', '');
+    const element = document.getElementById(targetId);
+    if (element) {
+      const headerOffset = 260;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   const menuItems = [
     {
       label: "ABOUT",
@@ -102,6 +117,7 @@ export default function Header() {
                           <a
                             key={subItem.href}
                             href={subItem.href}
+                            onClick={(e) => handleScrollToSection(e, subItem.href)}
                             className="block px-4 py-2 text-sm text-slate-700 hover:bg-emerald-50 hover:text-emerald-700 transition-colors"
                           >
                             {subItem.label}
@@ -114,6 +130,7 @@ export default function Header() {
               ) : (
                 <a
                   href={item.href}
+                  onClick={(e) => handleScrollToSection(e, item.href!)}
                   className="text-sm font-semibold tracking-wide text-slate-700 hover:text-emerald-700 transition-colors"
                 >
                   {item.label}
@@ -153,6 +170,7 @@ export default function Header() {
           </div>
           <a
             href="#contact"
+            onClick={(e) => handleScrollToSection(e, '#contact')}
             className="rounded-xl bg-emerald-600 px-5 py-2 text-sm font-semibold text-white transition duration-200 ease-in-out hover:bg-emerald-700"
           >
             CONTACT
@@ -215,7 +233,10 @@ export default function Header() {
                           key={subItem.href}
                           href={subItem.href}
                           className="block text-sm text-slate-600 hover:text-emerald-700 py-1"
-                          onClick={() => setMobileMenuOpen(false)}
+                          onClick={(e) => {
+                            handleScrollToSection(e, subItem.href);
+                            setMobileMenuOpen(false);
+                          }}
                         >
                           {subItem.label}
                         </a>
@@ -225,7 +246,10 @@ export default function Header() {
                     <a
                       href={item.href}
                       className="block text-sm text-slate-600 hover:text-emerald-700"
-                      onClick={() => setMobileMenuOpen(false)}
+                      onClick={(e) => {
+                        handleScrollToSection(e, item.href!);
+                        setMobileMenuOpen(false);
+                      }}
                     >
                       {item.label}
                     </a>
@@ -248,7 +272,10 @@ export default function Header() {
                 <a
                   href="#contact"
                   className="block text-center rounded-xl bg-emerald-600 px-4 py-3 font-semibold text-white hover:bg-emerald-700 transition"
-                  onClick={() => setMobileMenuOpen(false)}
+                  onClick={(e) => {
+                    handleScrollToSection(e, '#contact');
+                    setMobileMenuOpen(false);
+                  }}
                 >
                   CONTACT
                 </a>
