@@ -41,16 +41,16 @@ export default function Header() {
       label: "SERVICE PILLARS",
       items: [
         { label: "Climate Change & Decarbonization", href: "#pillar-climate-change" },
-        { label: "Sustainable products", href: "#pillar-sustainable-products" },
+        { label: "Sustainable Products", href: "#pillar-sustainable-products" },
         { label: "ESG Regulatory Compliance", href: "#pillar-esg-strategy" },
-        { label: "Critical Raw Materials (CRM) intelligence", href: "#pillar-critical-raw" },
+        { label: "Critical Raw Materials (CRM) Intelligence", href: "#pillar-critical-raw" },
       ],
     },
     {
       label: "CASE STUDIES",
       items: [
         { label: "CBAM Calculator of Steel Products", href: "#case-2" },
-        { label: "Scope 3 and supplier engagement", href: "#case-3" },
+        { label: "Scope 3 and Supplier Engagement", href: "#case-3" },
         { label: "LCA of Semiconductors", href: "#case-1" },
       ],
     },
