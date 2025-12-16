@@ -44,14 +44,14 @@ export default function Header() {
         { label: "Our Principles", href: "#principles" },
         { label: "How We Work", href: "#how-we-work" },
         { label: "Who We Are", href: "#who-we-are" },
-        { label: "Where we work", href: "#where-we-work" },
+        { label: "Where We work", href: "#where-we-work" },
       ],
     },
     {
       label: "SERVICE PILLARS",
       items: [
-        { label: "Sustainable products", href: "#pillar-sustainable-products" },
-        { label: "Climate change & decarbonization", href: "#pillar-climate-change" },
+        { label: "Sustainable Products", href: "#pillar-sustainable-products" },
+        { label: "Climate Change & Decarbonization", href: "#pillar-climate-change" },
         { label: "ESG Regulatory Compliance", href: "#pillar-esg-strategy" },
         { label: "Critical Raw Materials (CRM) intelligence", href: "#pillar-critical-raw" },
       ],

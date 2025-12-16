@@ -11,9 +11,9 @@ const nunitoSans = Nunito_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Lumin Advisory - Sustainability Strategy",
+  title: "Lumin Advisory — Sustainability Strategy",
   description:
-    "Science-Driven Sustainability Advisory for Industry and Tech.",
+    "Lumin Advisory empowers businesses to navigate complex ESG landscapes with confidence. We provide rigorous, science-driven advisory services that bridge the gap between ambitious targets and tangible, data-backed outcomes.",
   metadataBase: new URL("https://luminsustainability.com"), // update after deploy / domain connected
   icons: { icon: "icon.ico" },
 };
