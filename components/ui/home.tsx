@@ -3,6 +3,8 @@
 import { motion } from 'framer-motion';
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
+import { ArrowRight, Sparkles, Shield, TrendingUp, Leaf } from 'lucide-react';
 
 export default function HeroSection() {
   const serviceItems = [
@@ -10,104 +12,185 @@ export default function HeroSection() {
       id: 'pillar-climate-change',
       title: 'Climate Strategy & Decarbonization',
       desc: 'GHG Accounting · Decarbonization · Climate Risk Assessment',
+      icon: <TrendingUp className="h-5 w-5" />,
+      color: 'from-amber-500 to-orange-600',
     },
     {
       id: 'pillar-sustainable-products',
       title: 'Sustainable Products',
       desc: 'LCA, PCF and verification services',
+      icon: <Leaf className="h-5 w-5" />,
+      color: 'from-emerald-500 to-teal-600',
     },
     {
       id: 'pillar-critical-raw',
       title: 'Critical Raw Materials Intelligence',
       desc: 'CRM Supply & Demand · Sourcing',
+      icon: <Sparkles className="h-5 w-5" />,
+      color: 'from-purple-500 to-indigo-600',
     },
     {
       id: 'pillar-esg-strategy',
       title: 'ESG Strategy & Regulatory Alignment',
-      desc: 'EU Regulation compliance; CSRD, CBAM, CSDDD, ESPR, Green Claims',
+      desc: 'EU Regulation; CSRD, CBAM, CSDDD, ESPR',
+      icon: <Shield className="h-5 w-5" />,
+      color: 'from-sky-500 to-blue-600',
     },
   ];
 
   return (
-    <section className="relative overflow-hidden bg-slate-50 border-b border-slate-200">
-      <div className="mx-auto max-w-7xl grid grid-cols-1 gap-12 px-6 py-16 sm:gap-16 md:grid-cols-2 md:py-20">
-        {/* LEFT SIDE */}
-        <div>
-          <motion.h1
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-3xl sm:text-4xl md:text-5xl font-semibold leading-tight"
-          >
-            Science-driven sustainability advisory for innovation
-          </motion.h1>
+    <section className="relative min-h-[90vh] overflow-hidden">
+      {/* Animated Gradient Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-emerald-900 to-slate-900 animate-gradient" />
+      
+      {/* Floating Orbs */}
+      <div className="absolute top-20 left-10 w-72 h-72 bg-emerald-500/20 rounded-full blur-3xl animate-float" />
+      <div className="absolute bottom-20 right-10 w-96 h-96 bg-sky-500/20 rounded-full blur-3xl animate-float" style={{ animationDelay: '1s' }} />
+      <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
+      
+      {/* Grid Pattern Overlay */}
+      <div className="absolute inset-0 opacity-10" style={{
+        backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+      }} />
 
-          <motion.h2
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.3 }}
-                className="text-2xl sm:text-3xl font-semibold leading-tight text-emerald-700 mt-3"
-                >
-                Turn Ambition into Impact with Science-Driven Sustainability.
-                </motion.h2>
+      <div className="relative mx-auto max-w-7xl px-6 py-20 md:py-28">
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16 items-center">
+          {/* LEFT SIDE - Text Content */}
+          <div className="text-center lg:text-left">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="inline-flex items-center gap-2 rounded-full bg-emerald-500/20 border border-emerald-500/30 px-6 py-3 text-2xl text-emerald-300 mb-6"
+            >
+              <Sparkles className="h-6 w-6" />
+              <span className="font-bold">Science-Driven Sustainability Advisory</span>
+            </motion.div>
 
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight text-white"
+            >
+              Turn Ambition into{' '}
+              <span className="text-gradient">Impact</span>
+            </motion.h1>
 
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5 }}
-            className="mt-5 max-w-xl text-base sm:text-lg text-slate-600"
-          >
-            Lumin Advisory empowers businesses to navigate complex ESG landscapes with confidence. We provide rigorous, science-driven advisory services that bridge the gap between ambitious targets and tangible, data-backed outcomes.
-          </motion.p>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="mt-6 text-xl sm:text-2xl text-slate-300 max-w-xl mx-auto lg:mx-0"
+            >
+Lumin Advisory empowers businesses to navigate complex ESG landscapes with confidence. We provide rigorous, science-driven advisory services that bridge the gap between ambitious targets and tangible, data-backed outcomes.
+            </motion.p>
 
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+            >
+              <Link
+                href="#pillars"
+                className="group inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-500 px-6 py-4 text-white font-semibold hover:bg-emerald-400 transition-all shadow-lg shadow-emerald-500/30 hover:shadow-emerald-500/50"
+              >
+                Explore Our Services
+                <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+              </Link>
+              <Link
+                href="#contact"
+                className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/30 bg-white/10 backdrop-blur px-6 py-4 text-white font-semibold hover:bg-white/20 transition-all"
+              >
+                Get a Proposal
+              </Link>
+            </motion.div>
+
+            {/* Featured Video - Network Grid Model */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+              className="mt-10 relative rounded-2xl overflow-hidden shadow-2xl border border-white/20"
+            >
+              <video
+                src="/Filmim 10.mp4"
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-full h-auto"
+              />
+            </motion.div>
+
+          </div>
+
+          {/* RIGHT SIDE - Service Cards */}
           <motion.div
-            className="mt-6 flex flex-col sm:flex-row sm:flex-wrap gap-3"
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.7 }}
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="grid grid-cols-1 sm:grid-cols-2 gap-4"
           >
-            <Link href="#pillars" className="rounded-xl bg-emerald-600 px-5 py-3 text-white hover:bg-emerald-700 transition">
-              See Our Expertise
-            </Link>
-            <Link href="#contact" className="rounded-xl border border-slate-300 px-5 py-3 hover:bg-slate-100 transition">
-              Get a Proposal
-            </Link>
-          </motion.div>
-        </div>
+            {/* Feature Card - Above Service Items */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.35 }}
+              className="sm:col-span-2 rounded-2xl bg-white/5 backdrop-blur border border-white/20 p-6 mb-2"
+            >
+              <h3 className="text-2xl font-bold text-white mb-3">
+                Technical Depth. Strategic Focus.
+              </h3>
+              <p className="text-lg text-slate-300 leading-relaxed">
+                We turn rigorous ESG data into clear, actionable strategy—giving decision-givers the confidence they need to drive value.
+              </p>
+            </motion.div>
 
-        {/* RIGHT SIDE */}
-        <div className="space-y-6">
-          <motion.div
-            whileHover={{ scale: 1.03 }}
-            transition={{ type: 'spring', stiffness: 300 }}
-            className="rounded-2xl border border-slate-200 p-6 shadow-sm bg-white"
-          >
-            <p className="font-medium text-lg text-emerald-700">Technical Depth. Strategic Focus.</p>
-            <p className="mt-2 text-slate-600 text-sm">
-              We turn rigorous ESG data into clear, actionable strategy—giving decision-givers the confidence they need to drive value.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {serviceItems.map((item) => (
+            {serviceItems.map((item, index) => (
               <motion.a
                 key={item.id}
                 href={`#${item.id}`}
-                whileHover={{ scale: 1.03 }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
+                whileHover={{ scale: 1.03, y: -5 }}
                 whileTap={{ scale: 0.98 }}
-                className="border block rounded-xl p-4 bg-slate-50 transition hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-emerald-600 shadow-sm hover:shadow-md"
+                className="group relative overflow-hidden rounded-2xl bg-white/10 backdrop-blur border border-white/20 p-5 transition-all hover:bg-white/15 hover:border-white/30"
               >
-                <p className="font-semibold text-sm group-hover:text-emerald-700 transition text-emerald-900">
+                {/* Gradient accent */}
+                <div className={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r ${item.color}`} />
+                
+                <div className={`inline-flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-r ${item.color} text-white mb-3`}>
+                  {item.icon}
+                </div>
+                
+                <h3 className="text-lg font-semibold text-white group-hover:text-emerald-300 transition-colors">
                   {item.title}
+                </h3>
+                <p className="text-base text-slate-400 mt-1">
+                  {item.desc}
                 </p>
-                <ul className="text-xs text-slate-600 mt-1 space-y-0.5">
-                  <li>{item.desc}</li>
-                </ul>
+
+                <div className="mt-3 flex items-center gap-1 text-emerald-400 text-base opacity-0 group-hover:opacity-100 transition-opacity">
+                  <span>Learn more</span>
+                  <ArrowRight className="h-4 w-4" />
+                </div>
               </motion.a>
             ))}
-          </div>
+          </motion.div>
         </div>
+      </div>
+
+      {/* Wave Divider */}
+      <div className="absolute bottom-0 left-0 right-0">
+        <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full">
+          <path
+            d="M0 120L48 108C96 96 192 72 288 66C384 60 480 72 576 78C672 84 768 84 864 78C960 72 1056 60 1152 60C1248 60 1344 72 1392 78L1440 84V120H1392C1344 120 1248 120 1152 120C1056 120 960 120 864 120C768 120 672 120 576 120C480 120 384 120 288 120C192 120 96 120 48 120H0Z"
+            fill="white"
+          />
+        </svg>
       </div>
     </section>
   );

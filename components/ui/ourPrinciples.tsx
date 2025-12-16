@@ -28,8 +28,8 @@ export default function OurPrinciples() {
   return (
     <section id="principles" className="border-t border-slate-200 bg-white py-16">
       <div className="mx-auto max-w-7xl px-6">
-        <h2 className="text-4xl font-bold text-center text-emerald-900 mb-4">Our Principles</h2>
-        <p className="text-center text-slate-600 mb-12 max-w-3xl mx-auto">
+        <h2 className="text-5xl md:text-6xl font-bold text-center text-emerald-900 mb-4">Our Principles</h2>
+        <p className="text-xl text-center text-slate-600 mb-12 max-w-3xl mx-auto">
           The foundational values that guide every engagement
         </p>
         
@@ -42,10 +42,10 @@ export default function OurPrinciples() {
               <div className="grid h-12 w-12 place-items-center rounded-xl bg-emerald-600 text-white mb-4 group-hover:scale-110 transition-transform">
                 {principle.icon}
               </div>
-              <h3 className="text-lg font-semibold text-slate-900 mb-2">
+              <h3 className="text-xl font-semibold text-slate-900 mb-2">
                 {principle.title}
               </h3>
-              <p className="text-sm text-slate-700 leading-relaxed">
+              <p className="text-base text-slate-700 leading-relaxed">
                 {principle.description}
               </p>
             </div>
@@ -55,4 +55,8 @@ export default function OurPrinciples() {
     </section>
   );
 }
+
+
+
+
 

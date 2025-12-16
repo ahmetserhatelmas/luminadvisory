@@ -2,109 +2,99 @@
 
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
+import { Linkedin, Mail, MapPin, ArrowRight } from "lucide-react";
 
 export default function Footer() {
-    return (
-        <div>
-        {/* Footer */}
-        <footer className="border-t border-slate-200 bg-white">
-        <div className="mx-auto max-w-7xl px-6 py-12">
-            {/* Top row — links and info */}
-            <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-            {/* LEGAL (RECHTLICHES) */}
-            <div>
-                <h3 className="text-sm font-semibold text-slate-900 uppercase tracking-wide">Legal (Rechtliches)</h3>
-                <ul className="mt-3 space-y-2 text-sm text-slate-600">
-                <li><a href="/imprint" className="hover:text-emerald-700">Imprint (Impressum)</a></li>
-                <li><a href="/privacy" className="hover:text-emerald-700">Privacy Policy (Datenschutz)</a></li>
-                <li><a href="/terms" className="hover:text-emerald-700">Terms of Service (AGB)</a></li>
-                <li><button className="hover:text-emerald-700">Cookie Settings</button></li>
-                </ul>
-                <div className="mt-4 text-xs text-slate-500 space-y-1">
-                <p><strong>Email:</strong> hello@luminsustainability.com</p>
-                <p><strong>Address:</strong> Von-der-Heydt Str. 1, 10785 Berlin</p>
-                <p><strong>VAT ID:</strong> [TBD]</p>
-                </div>
-            </div>
+  return (
+    <footer className="relative bg-slate-900 text-white overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute inset-0">
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-sky-500/5 rounded-full blur-3xl" />
+      </div>
 
-            {/* COMPANY */}
-            <div>
-                <h3 className="text-sm font-semibold text-slate-900 uppercase tracking-wide">Company</h3>
-                <ul className="mt-3 space-y-2 text-sm text-slate-600">
-                <li className="font-semibold text-slate-900">Lumin Advisory</li>
-                <li>Sustainability Strategy UG</li>
-                <li>(haftungsbeschränkt)</li>
-                <li className="pt-2"><strong>Berlin HQ:</strong></li>
-                <li>Von-der-Heydt Str. 1</li>
-                <li>10785 Berlin, Germany</li>
-                <li className="pt-2"><strong>Offices:</strong></li>
-                <li>Berlin – Istanbul – Rotterdam</li>
-                <li className="pt-2"><a href="/careers" className="hover:text-emerald-700 font-medium">Careers</a></li>
-                </ul>
-            </div>
+      <div className="relative mx-auto max-w-7xl px-6 pt-16 pb-8">
+        {/* Links Grid */}
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 py-12">
+          {/* LEGAL */}
+          <div>
+            <h4 className="text-base font-semibold uppercase tracking-wider text-emerald-400 mb-4">
+              Legal
+            </h4>
+            <ul className="space-y-3 text-base text-slate-400">
+              <li><a href="/imprint" className="hover:text-white transition-colors">Imprint (Impressum)</a></li>
+              <li><a href="/privacy" className="hover:text-white transition-colors">Privacy Policy</a></li>
+              <li><a href="/terms" className="hover:text-white transition-colors">Terms of Service</a></li>
+              <li><button className="hover:text-white transition-colors">Cookie Settings</button></li>
+            </ul>
+          </div>
 
-            {/* REGISTRATION */}
-            <div>
-                <h3 className="text-sm font-semibold text-slate-900 uppercase tracking-wide">Registration</h3>
-                <ul className="mt-3 space-y-2 text-sm text-slate-600">
-                <li>Amtsgericht</li>
-                <li>Berlin-Charlottenburg</li>
-                <li className="pt-2"><strong>HRB:</strong> [TBD]</li>
-                <li className="pt-2"><strong>Managing Director:</strong></li>
-                <li>Dr. Arda Işıldar</li>
-                </ul>
-            </div>
-
-            {/* STAY CONNECTED */}
-            <div>
-                <h3 className="text-sm font-semibold text-slate-900 uppercase tracking-wide">Stay Connected</h3>
-                <p className="mt-3 text-sm text-slate-600">
-                Sign up for sustainability insights and updates.
-                </p>
-                <form className="mt-4 flex flex-col gap-2">
-                <input
-                    type="email"
-                    placeholder="Enter your email"
-                    className="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm focus:border-emerald-500 focus:ring-emerald-500"
-                />
-                <button
-                    type="submit"
-                    className="rounded-xl bg-emerald-600 px-4 py-2 text-sm text-white hover:bg-emerald-700"
-                >
-                    Subscribe
-                </button>
-                </form>
-                <div className="mt-4">
-                <a
-                    href="https://www.linkedin.com/company/lumin-advisory"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-sm text-slate-600 hover:text-emerald-700"
-                >
-                    <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    className="h-4 w-4"
-                    >
-                    <path d="M19 0h-14C2.2 0 0 2.2 0 5v14c0 2.8 2.2 5 5 5h14c2.8 0 5-2.2 5-5V5c0-2.8-2.2-5-5-5zM7 20H4V9h3v11zM5.5 7.5C4.1 7.5 3 6.4 3 5s1.1-2.5 2.5-2.5S8 3.6 8 5 6.9 7.5 5.5 7.5zM21 20h-3v-5.6c0-1.4-.6-2.4-1.8-2.4-1.1 0-1.7.7-2 1.4-.1.2-.1.6-.1.9V20h-3s.1-9 0-11h3v1.6c.4-.6 1.1-1.6 2.8-1.6 2 0 3.5 1.3 3.5 4.2V20z" />
-                    </svg>
-                    LinkedIn
+          {/* COMPANY */}
+          <div>
+            <h4 className="text-base font-semibold uppercase tracking-wider text-emerald-400 mb-4">
+              Company
+            </h4>
+            <ul className="space-y-3 text-base text-slate-400">
+              <li className="text-white font-medium">Lumin Advisory</li>
+              <li>Sustainability Strategy UG</li>
+              <li>(haftungsbeschränkt)</li>
+              <li className="pt-2">
+                <a href="/careers" className="text-emerald-400 hover:text-emerald-300 transition-colors font-medium">
+                  Careers →
                 </a>
-                </div>
-            </div>
-            </div>
+              </li>
+            </ul>
+          </div>
 
-            {/* Divider */}
-            <hr className="my-8 border-slate-200" />
+          {/* OFFICES */}
+          <div>
+            <h4 className="text-base font-semibold uppercase tracking-wider text-emerald-400 mb-4">
+              Offices
+            </h4>
+            <ul className="space-y-4 text-base text-slate-400">
+              <li className="flex items-start gap-2">
+                <MapPin className="h-4 w-4 mt-0.5 text-emerald-500 flex-shrink-0" />
+                <span>
+                  <strong className="text-white">Berlin HQ</strong><br />
+                  Von-der-Heydt Str. 1<br />
+                  10785 Berlin
+                </span>
+              </li>
+              <li className="flex items-start gap-2">
+                <MapPin className="h-4 w-4 mt-0.5 text-emerald-500 flex-shrink-0" />
+                <span>Rotterdam · Istanbul</span>
+              </li>
+            </ul>
+          </div>
 
-            {/* Bottom row — copyright */}
-            <div className="flex flex-col items-center justify-between gap-2 text-sm text-slate-500 sm:flex-row">
-            <p>© {new Date().getFullYear()} Lumin Advisory UG. All rights reserved. | Berlin, Germany</p>
-            <p>Science-driven sustainability advisory.</p>
-            </div>
+          {/* REGISTRATION */}
+          <div>
+            <h4 className="text-base font-semibold uppercase tracking-wider text-emerald-400 mb-4">
+              Registration
+            </h4>
+            <ul className="space-y-3 text-base text-slate-400">
+              <li>Amtsgericht Berlin-Charlottenburg</li>
+              <li><strong className="text-slate-300">HRB:</strong> [TBD]</li>
+              <li className="pt-2">
+                <strong className="text-slate-300">Managing Director:</strong><br />
+                Dr. Arda Işıldar
+              </li>
+            </ul>
+          </div>
         </div>
-        </footer>
+
+        {/* Bottom Bar */}
+        <div className="pt-8 border-t border-white/10">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-base text-slate-500">
+            <p>© {new Date().getFullYear()} Lumin Advisory UG. All rights reserved.</p>
+            <p className="flex items-center gap-2">
+              <span className="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+              Science-driven sustainability advisory
+            </p>
+          </div>
         </div>
-    );
+      </div>
+    </footer>
+  );
 }

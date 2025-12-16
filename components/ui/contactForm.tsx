@@ -75,7 +75,7 @@ export default function ContactForm() {
       />
 
       {/* GDPR Consent Checkbox */}
-      <label className="flex items-start gap-2 text-sm text-slate-600 cursor-pointer">
+      <label className="flex items-start gap-2 text-base text-slate-600 cursor-pointer">
         <input
           type="checkbox"
           checked={consent}
@@ -101,7 +101,7 @@ export default function ContactForm() {
 
       {message && (
         <p
-          className={`text-sm ${
+          className={`text-base ${
             status === "done" ? "text-emerald-700" : status === "error" ? "text-red-600" : ""
           }`}
         >

@@ -10,19 +10,29 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
 
-  const handleScrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
-    const targetId = href.replace('#', '');
-    const element = document.getElementById(targetId);
-    if (element) {
-      const headerOffset = 260;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-    }
+  const handleScrollToSection = (href: string) => {
+    // Close mobile menu first
+    setMobileMenuOpen(false);
+    
+    // Small delay to ensure menu closes, then scroll
+    setTimeout(() => {
+      const targetId = href.replace('#', '');
+      const element = document.getElementById(targetId);
+      if (element) {
+        // Get element position
+        const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+        
+        // Different offset for mobile vs desktop
+        const isMobile = window.innerWidth < 1024;
+        const offset = isMobile ? 380 : 180;
+        const offsetPosition = elementPosition - offset;
+        
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    }, 100);
   };
 
   const menuItems = [
@@ -34,24 +44,24 @@ export default function Header() {
         { label: "Our Principles", href: "#principles" },
         { label: "How We Work", href: "#how-we-work" },
         { label: "Who We Are", href: "#who-we-are" },
-        { label: "Where We Work", href: "#where-we-work" },
+        { label: "Where we work", href: "#where-we-work" },
       ],
     },
     {
       label: "SERVICE PILLARS",
       items: [
-        { label: "Climate Change & Decarbonization", href: "#pillar-climate-change" },
-        { label: "Sustainable Products", href: "#pillar-sustainable-products" },
+        { label: "Sustainable products", href: "#pillar-sustainable-products" },
+        { label: "Climate change & decarbonization", href: "#pillar-climate-change" },
         { label: "ESG Regulatory Compliance", href: "#pillar-esg-strategy" },
-        { label: "Critical Raw Materials (CRM) Intelligence", href: "#pillar-critical-raw" },
+        { label: "Critical Raw Materials (CRM) intelligence", href: "#pillar-critical-raw" },
       ],
     },
     {
       label: "CASE STUDIES",
       items: [
+        { label: "LCA of Semiconductors", href: "#case-1" },
         { label: "CBAM Calculator of Steel Products", href: "#case-2" },
         { label: "Scope 3 and Supplier Engagement", href: "#case-3" },
-        { label: "LCA of Semiconductors", href: "#case-1" },
       ],
     },
     {
@@ -67,9 +77,9 @@ export default function Header() {
 
   const languages = [
     { code: "en", flag: "🇬🇧", name: "English" },
+    { code: "de", flag: "🇩🇪", name: "Deutsch" },
     { code: "nl", flag: "🇳🇱", name: "Dutch" },
-    { code: "de", flag: "🇩🇪", name: "German" },
-    { code: "tr", flag: "🇹🇷", name: "Turkish" },
+    { code: "tr", flag: "🇹🇷", name: "Türkçe" },
   ];
 
   return (
@@ -86,17 +96,17 @@ export default function Header() {
             priority
           />
           <div className="flex flex-col">
-            <span className="text-xl font-bold tracking-tight text-slate-800 uppercase">
+            <span className="text-2xl font-bold tracking-tight text-slate-800 uppercase">
               Lumin Advisory
             </span>
-            <span className="text-sm text-slate-600">
+            <span className="text-base text-slate-600">
               Sustainability Strategy
             </span>
           </div>
         </Link>
 
         {/* DESKTOP NAV */}
-        <nav className="hidden gap-6 lg:flex items-center">
+        <nav className="hidden gap-8 lg:flex items-center ml-12">
           {menuItems.map((item) => (
             <div
               key={item.label}
@@ -106,7 +116,7 @@ export default function Header() {
             >
               {item.items ? (
                 <>
-                  <button className="flex items-center gap-1 text-sm font-semibold tracking-wide text-slate-700 hover:text-emerald-700 transition-colors">
+                  <button className="flex items-center gap-1 text-base font-semibold tracking-wide text-slate-700 hover:text-emerald-700 transition-colors">
                     {item.label}
                     <ChevronDown className="h-4 w-4" />
                   </button>
@@ -114,34 +124,40 @@ export default function Header() {
                     <div className="absolute left-0 top-full pt-1">
                       <div className="w-64 rounded-lg border border-slate-200 bg-white shadow-lg py-2">
                         {item.items.map((subItem) => (
-                          <a
+                          <button
                             key={subItem.href}
-                            href={subItem.href}
-                            onClick={(e) => handleScrollToSection(e, subItem.href)}
-                            className="block px-4 py-2 text-sm text-slate-700 hover:bg-emerald-50 hover:text-emerald-700 transition-colors"
+                            onClick={(e) => {
+                              e.preventDefault();
+                              handleScrollToSection(subItem.href);
+                            }}
+                            className="w-full text-left block px-4 py-2 text-base text-slate-700 hover:bg-emerald-50 hover:text-emerald-700 transition-colors"
                           >
                             {subItem.label}
-                          </a>
+                          </button>
                         ))}
                       </div>
                     </div>
                   )}
                 </>
               ) : (
-                <a
-                  href={item.href}
-                  onClick={(e) => handleScrollToSection(e, item.href!)}
-                  className="text-sm font-semibold tracking-wide text-slate-700 hover:text-emerald-700 transition-colors"
+                <button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    if (item.href) {
+                      handleScrollToSection(item.href);
+                    }
+                  }}
+                  className="text-base font-semibold tracking-wide text-slate-700 hover:text-emerald-700 transition-colors"
                 >
                   {item.label}
-                </a>
+                </button>
               )}
             </div>
           ))}
         </nav>
 
         {/* LANGUAGE & CONTACT */}
-        <div className="hidden lg:flex items-center gap-4">
+        <div className="hidden lg:flex items-center gap-8">
           {/* Language Dropdown */}
           <div 
             className="relative"
@@ -158,7 +174,7 @@ export default function Header() {
                   {languages.map((lang) => (
                     <button
                       key={lang.code}
-                      className="w-full flex items-center gap-3 px-4 py-2 text-sm text-slate-700 hover:bg-emerald-50 hover:text-emerald-700 transition-colors"
+                      className="w-full flex items-center gap-3 px-4 py-2 text-base text-slate-700 hover:bg-emerald-50 hover:text-emerald-700 transition-colors"
                     >
                       <span className="text-xl">{lang.flag}</span>
                       <span>{lang.name}</span>
@@ -168,13 +184,15 @@ export default function Header() {
               </div>
             )}
           </div>
-          <a
-            href="#contact"
-            onClick={(e) => handleScrollToSection(e, '#contact')}
-            className="rounded-xl bg-emerald-600 px-5 py-2 text-sm font-semibold text-white transition duration-200 ease-in-out hover:bg-emerald-700"
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              handleScrollToSection('#contact');
+            }}
+            className="rounded-xl bg-emerald-600 px-5 py-2 text-base font-semibold text-white transition duration-200 ease-in-out hover:bg-emerald-700"
           >
             CONTACT
-          </a>
+          </button>
         </div>
 
         {/* MOBILE MENU TOGGLE */}
@@ -223,36 +241,36 @@ export default function Header() {
             <nav className="flex flex-col px-6 py-4 space-y-3">
               {menuItems.map((item) => (
                 <div key={item.label}>
-                  <div className="font-semibold text-sm text-slate-800 mb-2">
+                  <div className="font-semibold text-base text-slate-800 mb-2">
                     {item.label}
                   </div>
                   {item.items ? (
                     <div className="ml-3 space-y-2">
                       {item.items.map((subItem) => (
-                        <a
+                        <button
                           key={subItem.href}
-                          href={subItem.href}
-                          className="block text-sm text-slate-600 hover:text-emerald-700 py-1"
                           onClick={(e) => {
-                            handleScrollToSection(e, subItem.href);
-                            setMobileMenuOpen(false);
+                            e.preventDefault();
+                            handleScrollToSection(subItem.href);
                           }}
+                          className="w-full text-left block text-base text-slate-600 hover:text-emerald-700 py-1"
                         >
                           {subItem.label}
-                        </a>
+                        </button>
                       ))}
                     </div>
                   ) : (
-                    <a
-                      href={item.href}
-                      className="block text-sm text-slate-600 hover:text-emerald-700"
+                    <button
                       onClick={(e) => {
-                        handleScrollToSection(e, item.href!);
-                        setMobileMenuOpen(false);
+                        e.preventDefault();
+                        if (item.href) {
+                          handleScrollToSection(item.href);
+                        }
                       }}
+                      className="w-full text-left block text-base text-slate-600 hover:text-emerald-700"
                     >
                       {item.label}
-                    </a>
+                    </button>
                   )}
                 </div>
               ))}
@@ -269,16 +287,15 @@ export default function Header() {
                     </button>
                   ))}
                 </div>
-                <a
-                  href="#contact"
-                  className="block text-center rounded-xl bg-emerald-600 px-4 py-3 font-semibold text-white hover:bg-emerald-700 transition"
+                <button
                   onClick={(e) => {
-                    handleScrollToSection(e, '#contact');
-                    setMobileMenuOpen(false);
+                    e.preventDefault();
+                    handleScrollToSection('#contact');
                   }}
+                  className="w-full block text-center rounded-xl bg-emerald-600 px-4 py-3 font-semibold text-white hover:bg-emerald-700 transition"
                 >
                   CONTACT
-                </a>
+                </button>
               </div>
             </nav>
           </motion.div>
