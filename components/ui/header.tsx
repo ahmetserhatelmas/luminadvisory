@@ -19,12 +19,17 @@ export default function Header() {
       const targetId = href.replace('#', '');
       const element = document.getElementById(targetId);
       if (element) {
+        // Get the header element and its actual height
+        const header = document.querySelector('header');
+        const headerHeight = header ? header.offsetHeight : 0;
+        
         // Get element position
         const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
         
-        // Different offset for mobile vs desktop
+        // Different extra padding for mobile vs desktop
         const isMobile = window.innerWidth < 1024;
-        const offset = isMobile ? 380 : 180;
+        const extraPadding = isMobile ? 80 : 100;
+        const offset = headerHeight + extraPadding;
         const offsetPosition = elementPosition - offset;
         
         window.scrollTo({
@@ -84,15 +89,15 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-20 border-b border-slate-200 bg-white/80 backdrop-blur shadow-sm">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-0">
         {/* LOGO + BRAND */}
         <Link href="/" className="flex items-center gap-3">
           <Image
-            src="/Lumin_logo_1.png"
+            src="/LUMIN ADVISORY_LOGO_BLACK.png"
             alt="Lumin Advisory logo"
-            width={80}
-            height={80}
-            className="h-20 w-auto"
+            width={200}
+            height={200}
+            className="h-[200px] w-auto"
             priority
           />
           <div className="flex flex-col">
