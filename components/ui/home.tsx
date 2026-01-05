@@ -107,23 +107,6 @@ Lumin Advisory empowers businesses to navigate complex ESG landscapes with confi
               </Link>
             </motion.div>
 
-            {/* Featured Video - Network Grid Model */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
-              className="mt-10 relative rounded-2xl overflow-hidden shadow-2xl border border-white/20"
-            >
-              <video
-                src="/Filmim 10.mp4"
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="w-full h-auto"
-              />
-            </motion.div>
-
           </div>
 
           {/* RIGHT SIDE - Service Cards */}
