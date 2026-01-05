@@ -97,7 +97,7 @@ export default function Header() {
             alt="Lumin Advisory logo"
             width={200}
             height={200}
-            className="h-[200px] w-auto"
+            className="h-[100px] md:h-[160px] lg:h-[200px] w-auto"
             priority
           />
           <div className="flex flex-col">
