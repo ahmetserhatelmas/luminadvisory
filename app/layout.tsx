@@ -16,9 +16,9 @@ export const metadata: Metadata = {
     "Lumin Advisory empowers businesses to navigate complex ESG landscapes with confidence. We provide rigorous, science-driven advisory services that bridge the gap between ambitious targets and tangible, data-backed outcomes.",
   metadataBase: new URL("https://luminsustainability.com"), // update after deploy / domain connected
   icons: { 
-    icon: "/icon5.ico",
-    shortcut: "/icon5.ico",
-    apple: "/icon5.ico",
+    icon: "/icon5.ico?v=3",
+    shortcut: "/icon5.ico?v=3",
+    apple: "/icon5.ico?v=3",
   },
   verification: {
     google: "my0fmTrfN8Udp0k6q6RygxYmRBpMDRhNiwB8U0dCgeI",
