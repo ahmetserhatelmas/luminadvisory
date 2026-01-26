@@ -14,6 +14,7 @@ export default function HeroSection() {
       desc: 'GHG Accounting · Decarbonization · Climate Risk Assessment',
       icon: <TrendingUp className="h-5 w-5" />,
       color: 'from-amber-500 to-orange-600',
+      bgColor: 'bg-gradient-to-br from-amber-900/40 to-orange-900/40',
     },
     {
       id: 'pillar-sustainable-products',
@@ -21,6 +22,7 @@ export default function HeroSection() {
       desc: 'LCA, PCF and verification services',
       icon: <Leaf className="h-5 w-5" />,
       color: 'from-emerald-500 to-teal-600',
+      bgColor: 'bg-gradient-to-br from-emerald-900/40 to-teal-900/40',
     },
     {
       id: 'pillar-critical-raw',
@@ -28,6 +30,7 @@ export default function HeroSection() {
       desc: 'CRM Supply & Demand · Sourcing',
       icon: <Sparkles className="h-5 w-5" />,
       color: 'from-purple-500 to-indigo-600',
+      bgColor: 'bg-gradient-to-br from-purple-900/40 to-indigo-900/40',
     },
     {
       id: 'pillar-esg-strategy',
@@ -35,6 +38,7 @@ export default function HeroSection() {
       desc: 'EU Regulation; CSRD, CBAM, CSDDD, ESPR',
       icon: <Shield className="h-5 w-5" />,
       color: 'from-sky-500 to-blue-600',
+      bgColor: 'bg-gradient-to-br from-sky-900/40 to-blue-900/40',
     },
   ];
 
@@ -140,7 +144,7 @@ Lumin Advisory empowers businesses to navigate complex ESG landscapes with confi
                 transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
                 whileHover={{ scale: 1.03, y: -5 }}
                 whileTap={{ scale: 0.98 }}
-                className="group relative overflow-hidden rounded-2xl bg-white/10 backdrop-blur border border-white/20 p-5 transition-all hover:bg-white/15 hover:border-white/30"
+                className={`group relative overflow-hidden rounded-2xl backdrop-blur border border-white/20 p-5 transition-all hover:border-white/30 ${item.bgColor}`}
               >
                 {/* Gradient accent */}
                 <div className={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r ${item.color}`} />

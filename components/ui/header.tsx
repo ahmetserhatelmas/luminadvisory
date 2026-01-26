@@ -83,7 +83,7 @@ export default function Header() {
   const languages = [
     { code: "en", flag: "🇬🇧", name: "English" },
     { code: "de", flag: "🇩🇪", name: "Deutsch" },
-    { code: "nl", flag: "🇳🇱", name: "Dutch" },
+    { code: "nl", flag: "🇳🇱", name: "Nederlands" },
     { code: "tr", flag: "🇹🇷", name: "Türkçe" },
   ];
 

@@ -72,7 +72,7 @@ export default function WhereWeWork() {
             {/* Image */}
             <div className="rounded-3xl overflow-hidden shadow-2xl border border-slate-200">
               <Image
-                src="/taslak25.tiff"
+                src="/taslak25_swapped.png"
                 alt="Global Reach - Strategic Locations"
                 width={800}
                 height={600}

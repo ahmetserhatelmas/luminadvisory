@@ -106,17 +106,17 @@ export default function MissionVision() {
           className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4"
         >
           {[
-            { icon: <Rocket className="h-5 w-5" />, label: "Innovation" },
-            { icon: <Target className="h-5 w-5" />, label: "Precision" },
-            { icon: <Heart className="h-5 w-5" />, label: "Integrity" },
-            { icon: <Eye className="h-5 w-5" />, label: "Transparency" },
+            { icon: <Rocket className="h-7 w-7" />, label: "Innovation" },
+            { icon: <Target className="h-7 w-7" />, label: "Precision" },
+            { icon: <Heart className="h-7 w-7" />, label: "Integrity" },
+            { icon: <Eye className="h-7 w-7" />, label: "Transparency" },
           ].map((value, index) => (
             <div
               key={index}
-              className="flex items-center justify-center gap-3 p-4 rounded-2xl bg-slate-50 border border-slate-200 hover:border-emerald-300 hover:bg-emerald-50 transition-all"
+              className="flex items-center justify-center gap-3 p-5 rounded-2xl bg-slate-50 border border-slate-200 hover:border-emerald-300 hover:bg-emerald-50 transition-all"
             >
               <div className="text-emerald-600">{value.icon}</div>
-              <span className="font-semibold text-slate-700">{value.label}</span>
+              <span className="font-semibold text-lg text-slate-700">{value.label}</span>
             </div>
           ))}
         </motion.div>
