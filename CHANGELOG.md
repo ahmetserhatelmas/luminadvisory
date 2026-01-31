@@ -360,3 +360,4 @@ High dependency on Gallium & Germanium for semiconductors/optical products. >90%
 **Son Güncelleme:** 6 Aralık 2025  
 **Durum:** ✅ Tamamlandı - Production Ready
 
+
