@@ -104,7 +104,7 @@ export default function Header() {
         {/* LOGO + BRAND */}
         <Link href={`/${locale}`} className="flex items-center">
           <Image
-            src="/lumin-logo-v2.png"
+            src="/lumin-logo-v4.png"
             alt="Lumin Advisory Sustainability Strategy"
             width={508}
             height={550}
