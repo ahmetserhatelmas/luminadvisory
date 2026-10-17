@@ -5,10 +5,23 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, Globe } from "lucide-react";
+import { usePathname, useRouter } from "next/navigation";
+import { useI18n } from "@/lib/i18n";
 
 export default function Header() {
+  const { t, locale } = useI18n();
+  const router = useRouter();
+  const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+
+  function switchLocale(next: string) {
+    const parts = pathname.split("/");
+    parts[1] = next;
+    router.push(parts.join("/") || `/${next}`);
+    setMobileMenuOpen(false);
+    setActiveDropdown(null);
+  }
 
   const handleScrollToSection = (href: string) => {
     // Close mobile menu first
@@ -42,72 +55,62 @@ export default function Header() {
 
   const menuItems = [
     {
-      label: "ABOUT",
+      label: t.nav.about,
       items: [
-        { label: "Mission and Vision", href: "#mission" },
-        { label: "Our Story", href: "#story" },
-        { label: "Our Principles", href: "#principles" },
-        { label: "How We Work", href: "#how-we-work" },
-        { label: "Who We Are", href: "#who-we-are" },
-        { label: "Where We work", href: "#where-we-work" },
+        { label: t.nav.mission, href: "#mission" },
+        { label: t.nav.story, href: "#story" },
+        { label: t.nav.principles, href: "#principles" },
+        { label: t.nav.who, href: "#who-we-are" },
+        { label: t.nav.where, href: "#where-we-work" },
       ],
     },
     {
-      label: "SERVICE PILLARS",
+      label: t.nav.services,
       items: [
-        { label: "Sustainable Products", href: "#pillar-sustainable-products" },
-        { label: "Climate Change & Decarbonization", href: "#pillar-climate-change" },
-        { label: "ESG Regulatory Compliance", href: "#pillar-esg-strategy" },
-        { label: "Critical Raw Materials (CRM) intelligence", href: "#pillar-critical-raw" },
+        { label: t.pillars.products.title, href: "#pillar-sustainable-products" },
+        { label: t.pillars.climate.title, href: "#pillar-climate-change" },
+        { label: t.pillars.esg.title, href: "#pillar-esg-strategy" },
+        { label: t.pillars.crm.title, href: "#pillar-critical-raw" },
       ],
     },
     {
-      label: "CASE STUDIES",
+      label: t.nav.cases,
       items: [
-        { label: "LCA of Semiconductors", href: "#case-1" },
-        { label: "CBAM Calculator of Steel Products", href: "#case-2" },
-        { label: "Scope 3 and Supplier Engagement", href: "#case-3" },
+        { label: t.cases.items[0].title, href: "#case-1" },
+        { label: t.cases.items[1].title, href: "#case-2" },
+        { label: t.cases.items[2].title, href: "#case-3" },
       ],
     },
     {
-      label: "INSIGHTS",
+      label: t.nav.insights,
       items: [
-        { label: "Scope 3", href: "#insight-scope3" },
-        { label: "Carbon Shadow Pricing", href: "#insight-carbon" },
-        { label: "Critical Raw Materials and Geopolitics", href: "#insight-crm" },
+        { label: t.insights.items[0].title, href: "#insight-bottleneck" },
+        { label: t.insights.items[1].title, href: "#insight-scrapyard" },
       ],
     },
-    { label: "RESOURCES", href: "#resources" },
+    { label: t.nav.approach, href: "#how-we-work" },
+    { label: t.nav.resources, href: "#resources" },
   ];
 
   const languages = [
     { code: "en", flag: "🇬🇧", name: "English" },
     { code: "de", flag: "🇩🇪", name: "Deutsch" },
     { code: "nl", flag: "🇳🇱", name: "Nederlands" },
-    { code: "tr", flag: "🇹🇷", name: "Türkçe" },
   ];
 
   return (
     <header className="sticky top-0 z-20 border-b border-slate-200 bg-white/80 backdrop-blur shadow-sm">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-0">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-2">
         {/* LOGO + BRAND */}
-        <Link href="/" className="flex items-center gap-3">
+        <Link href={`/${locale}`} className="flex items-center">
           <Image
-            src="/LUMIN ADVISORY_LOGO_BLACK.png"
-            alt="Lumin Advisory logo"
-            width={200}
-            height={200}
-            className="h-[100px] md:h-[160px] lg:h-[200px] w-auto"
+            src="/lumin-logo-v2.png"
+            alt="Lumin Advisory Sustainability Strategy"
+            width={508}
+            height={550}
+            className="h-[72px] md:h-[88px] lg:h-[100px] w-auto"
             priority
           />
-          <div className="flex flex-col">
-            <span className="text-2xl font-bold tracking-tight text-slate-800 uppercase">
-              Lumin Advisory
-            </span>
-            <span className="text-base text-slate-600">
-              Sustainability Strategy
-            </span>
-          </div>
         </Link>
 
         {/* DESKTOP NAV */}
@@ -179,7 +182,8 @@ export default function Header() {
                   {languages.map((lang) => (
                     <button
                       key={lang.code}
-                      className="w-full flex items-center gap-3 px-4 py-2 text-base text-slate-700 hover:bg-emerald-50 hover:text-emerald-700 transition-colors"
+                      onClick={() => switchLocale(lang.code)}
+                      className={`w-full flex items-center gap-3 px-4 py-2 text-base transition-colors ${locale === lang.code ? "text-emerald-700 bg-emerald-50" : "text-slate-700 hover:bg-emerald-50 hover:text-emerald-700"}`}
                     >
                       <span className="text-xl">{lang.flag}</span>
                       <span>{lang.name}</span>
@@ -196,7 +200,7 @@ export default function Header() {
             }}
             className="rounded-xl bg-emerald-600 px-5 py-2 text-base font-semibold text-white transition duration-200 ease-in-out hover:bg-emerald-700"
           >
-            CONTACT
+            {t.nav.contact}
           </button>
         </div>
 
@@ -286,7 +290,8 @@ export default function Header() {
                     <button
                       key={lang.code}
                       title={lang.name}
-                      className="text-2xl"
+                      onClick={() => switchLocale(lang.code)}
+                      className={`text-2xl ${locale === lang.code ? "opacity-100" : "opacity-50"}`}
                     >
                       {lang.flag}
                     </button>
@@ -299,7 +304,7 @@ export default function Header() {
                   }}
                   className="w-full block text-center rounded-xl bg-emerald-600 px-4 py-3 font-semibold text-white hover:bg-emerald-700 transition"
                 >
-                  CONTACT
+                  {t.nav.contact}
                 </button>
               </div>
             </nav>

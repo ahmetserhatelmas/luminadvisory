@@ -3,8 +3,16 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Target, Eye, Rocket, Heart } from "lucide-react";
+import { useI18n } from "@/lib/i18n";
 
 export default function MissionVision() {
+  const { t } = useI18n();
+  const valueIcons = [
+    <Rocket key="i" className="h-7 w-7" />,
+    <Target key="p" className="h-7 w-7" />,
+    <Heart key="h" className="h-7 w-7" />,
+    <Eye key="e" className="h-7 w-7" />,
+  ];
   return (
     <section id="mission" className="relative bg-white py-20 overflow-hidden">
       {/* Background Pattern */}
@@ -25,7 +33,7 @@ export default function MissionVision() {
           className="text-center mb-16"
         >
           <h2 className="text-5xl md:text-6xl font-bold text-slate-900">
-            Mission & Vision
+            {t.mission.heading}
           </h2>
         </motion.div>
         
@@ -47,11 +55,9 @@ export default function MissionVision() {
               <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-white/20 backdrop-blur text-white mb-6">
                 <Target className="h-8 w-8" />
               </div>
-              <h3 className="text-3xl lg:text-4xl font-bold text-white mb-4">Our Mission</h3>
+              <h3 className="text-3xl lg:text-4xl font-bold text-white mb-4">{t.mission.title}</h3>
               <p className="text-emerald-100 text-xl leading-relaxed">
-                To empower organizations with the scientific rigor and strategic clarity needed to navigate 
-                the sustainable transition. We exist to ensure that every environmental decision is backed 
-                by verified data, reducing risk and maximizing impact.
+                {t.mission.text}
               </p>
               
               {/* Quote accent */}
@@ -80,11 +86,9 @@ export default function MissionVision() {
               <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-white/20 backdrop-blur text-white mb-6">
                 <Eye className="h-8 w-8" />
               </div>
-              <h3 className="text-3xl lg:text-4xl font-bold text-white mb-4">Our Vision</h3>
+              <h3 className="text-3xl lg:text-4xl font-bold text-white mb-4">{t.vision.title}</h3>
               <p className="text-sky-100 text-xl leading-relaxed">
-                A future where business strategy and planetary boundaries are fully aligned. We envision 
-                an economy where transparency is the standard, and sustainability is no longer a burden 
-                of compliance, but a driver of operational excellence.
+                {t.vision.text}
               </p>
               
               {/* Quote accent */}
@@ -105,18 +109,13 @@ export default function MissionVision() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4"
         >
-          {[
-            { icon: <Rocket className="h-7 w-7" />, label: "Innovation" },
-            { icon: <Target className="h-7 w-7" />, label: "Precision" },
-            { icon: <Heart className="h-7 w-7" />, label: "Integrity" },
-            { icon: <Eye className="h-7 w-7" />, label: "Transparency" },
-          ].map((value, index) => (
+          {t.values.map((label, index) => (
             <div
-              key={index}
+              key={label}
               className="flex items-center justify-center gap-3 p-5 rounded-2xl bg-slate-50 border border-slate-200 hover:border-emerald-300 hover:bg-emerald-50 transition-all"
             >
-              <div className="text-emerald-600">{value.icon}</div>
-              <span className="font-semibold text-lg text-slate-700">{value.label}</span>
+              <div className="text-emerald-600">{valueIcons[index]}</div>
+              <span className="font-semibold text-lg text-slate-700">{label}</span>
             </div>
           ))}
         </motion.div>

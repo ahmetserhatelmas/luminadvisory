@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Sparkles } from "lucide-react";
+import { useI18n } from "@/lib/i18n";
 
 // Pre-computed leaf positions to avoid hydration mismatch
 const leafData = [
@@ -24,6 +25,7 @@ const leafData = [
 ];
 
 export default function OurStory() {
+  const { t } = useI18n();
   const [mounted, setMounted] = useState(false);
   
   useEffect(() => {
@@ -91,7 +93,7 @@ export default function OurStory() {
         >
           <div className="inline-flex items-center gap-2 mb-4">
             <Sparkles className="h-8 w-8 text-emerald-600" />
-            <h2 className="text-5xl md:text-6xl font-bold text-emerald-900">Our Story</h2>
+            <h2 className="text-5xl md:text-6xl font-bold text-emerald-900">{t.story.title}</h2>
           </div>
         </motion.div>
         
@@ -114,10 +116,7 @@ export default function OurStory() {
           </div>
           
           <p className="text-xl text-slate-700 leading-relaxed relative z-10">
-            Lumin Advisory was founded to bridge a critical gap in the market: the disconnect between 
-            rigorous environmental engineering and high-level business strategy. We observed that companies 
-            were often paralyzed by the complexity of sustainability data or misled by vague "green" 
-            consulting that lacked technical depth. Leaders needed more than good intentions; they needed facts.
+            {t.story.text}
           </p>
         </motion.div>
       </div>

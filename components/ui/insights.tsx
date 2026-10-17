@@ -1,10 +1,13 @@
 'use client';
 
 import React, { useRef } from "react";
+import Link from "next/link";
 import { motion } from "framer-motion";
-import { TrendingUp, DollarSign, Globe2, ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, ArrowRight, Recycle, Mountain } from "lucide-react";
+import { useI18n } from "@/lib/i18n";
 
 export default function Insights() {
+  const { t, locale } = useI18n();
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const scroll = (direction: 'left' | 'right') => {
@@ -17,35 +20,19 @@ export default function Insights() {
     }
   };
 
-  const insights = [
-    {
-      id: "insight-scope3",
-      icon: <TrendingUp className="h-7 w-7" />,
-      title: "Scope 3 is about 80–90% of all emissions — but none are under direct control",
-      description: "Most companies now realise the bulk of their footprint sits in Scope 3 – upstream and downstream activities they don't own or operate. The challenge isn't just measurement, but influence: how to work with suppliers, customers and designers to shift decisions you don't directly control.",
-      gradient: "from-sky-500 to-cyan-600",
-      bgColor: "bg-gradient-to-br from-sky-50 to-cyan-50",
-      tag: "Emissions"
-    },
-    {
-      id: "insight-carbon",
-      icon: <DollarSign className="h-7 w-7" />,
-      title: "Carbon shadow pricing reflects the real cost of a product",
-      description: "A growing number of companies are assigning an internal carbon price to products, projects and investments. This shadow price doesn't appear on the invoice, but it changes decisions: which materials to choose, which suppliers to favour, and where decarbonisation projects suddenly become financially attractive.",
-      gradient: "from-emerald-500 to-teal-600",
-      bgColor: "bg-gradient-to-br from-emerald-50 to-teal-50",
-      tag: "Strategy"
-    },
-    {
-      id: "insight-crm",
-      icon: <Globe2 className="h-7 w-7" />,
-      title: "Critical Raw Materials have become a mainstream topic — what's next?",
-      description: "Critical raw materials have moved from expert reports to boardroom agendas. The next step is moving beyond lists and flags to concrete action: mapping where CRMs sit in your portfolio, stress-testing supply scenarios, and designing products and sourcing strategies that are both resilient and genuinely more sustainable.",
-      gradient: "from-purple-500 to-indigo-600",
-      bgColor: "bg-gradient-to-br from-purple-50 to-indigo-50",
-      tag: "Supply Chain"
-    }
+  const meta = [
+    { id: "insight-bottleneck", icon: <Mountain className="h-7 w-7" />, gradient: "from-purple-500 to-indigo-600", bgColor: "bg-gradient-to-br from-purple-50 to-indigo-50", slug: "critical-minerals-bottleneck" },
+    { id: "insight-scrapyard", icon: <Recycle className="h-7 w-7" />, gradient: "from-emerald-500 to-teal-600", bgColor: "bg-gradient-to-br from-emerald-50 to-teal-50", slug: "mine-in-scrapyard" },
   ];
+  const insights = t.insights.items.map((item, i) => ({
+    ...meta[i],
+    title: item.title,
+    description: item.text,
+    tag: item.tag,
+    href: `/${locale}/insights/${meta[i].slug}`,
+    date: item.date,
+    isArticle: true,
+  }));
 
   return (
     <section id="insights" className="relative bg-slate-900 py-20 overflow-hidden">
@@ -66,13 +53,13 @@ export default function Insights() {
         >
           <div>
             <span className="inline-block px-6 py-3 rounded-full bg-emerald-500/20 text-emerald-400 text-2xl font-bold mb-4">
-              Stay Informed
+              {t.insights.eyebrow}
             </span>
             <h2 className="text-5xl md:text-6xl font-bold text-white">
-              Insights
+              {t.insights.title}
             </h2>
             <p className="mt-4 text-xl text-slate-400 max-w-xl">
-              Strategic perspectives on the evolving sustainability landscape
+              {t.insights.intro}
             </p>
           </div>
           
@@ -108,11 +95,19 @@ export default function Insights() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="group flex-shrink-0 w-[350px] md:w-[400px] snap-start"
             >
-              <div className={`h-full ${insight.bgColor} rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 group-hover:-translate-y-2`}>
-                {/* Tag */}
-                <span className={`inline-block px-3 py-1 rounded-full text-xs font-semibold text-white bg-gradient-to-r ${insight.gradient} mb-4`}>
-                  {insight.tag}
-                </span>
+              <div className={`h-full ${insight.bgColor} rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 group-hover:-translate-y-2 flex flex-col`}>
+                {/* Tag + date row */}
+                <div className="flex items-center justify-between mb-4">
+                  <span className={`inline-block px-3 py-1 rounded-full text-xs font-semibold text-white bg-gradient-to-r ${insight.gradient}`}>
+                    {insight.tag}
+                  </span>
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs text-slate-500 font-medium">{insight.date}</span>
+                    {locale !== "en" && (
+                      <span className="text-xs font-semibold text-emerald-700">{t.insights.englishOnly}</span>
+                    )}
+                  </div>
+                </div>
                 
                 {/* Icon */}
                 <div className={`inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-r ${insight.gradient} text-white shadow-lg mb-4`}>
@@ -123,9 +118,19 @@ export default function Insights() {
                 <h3 className="text-xl font-bold text-slate-900 mb-3 leading-tight group-hover:text-emerald-700 transition-colors">
                   {insight.title}
                 </h3>
-                <p className="text-base text-slate-600 leading-relaxed">
+                <p className="text-base text-slate-600 leading-relaxed flex-1">
                   {insight.description}
                 </p>
+
+                {/* Read Article link */}
+                {insight.href && (
+                  <Link
+                    href={insight.href}
+                    className={`mt-5 inline-flex items-center gap-2 text-sm font-semibold bg-gradient-to-r ${insight.gradient} bg-clip-text text-transparent hover:gap-3 transition-all`}
+                  >
+                    {t.insights.read} <ArrowRight className="h-4 w-4 text-emerald-600" />
+                  </Link>
+                )}
               </div>
             </motion.div>
           ))}
@@ -136,7 +141,7 @@ export default function Insights() {
           {insights.map((_, index) => (
             <div
               key={index}
-              className="w-2 h-2 rounded-full bg-white/30"
+              className={`rounded-full bg-white/30 transition-all ${index < 2 ? "w-4 h-2" : "w-2 h-2"}`}
             />
           ))}
         </div>

@@ -3,8 +3,10 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Factory, Users, Cpu, ArrowRight } from 'lucide-react';
+import { useI18n } from '@/lib/i18n';
 
 export default function CaseStudiesSection() {
+  const { t } = useI18n();
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
@@ -37,38 +39,22 @@ export default function CaseStudiesSection() {
     }
   };
 
-  const caseStudies = [
-    {
-      id: "case-1",
-      icon: <Factory className="h-6 w-6" />,
-      tag: "Product Carbon Footprint",
-      title: "PCF of Semi-Finished Goods",
-      gradient: "from-amber-500 to-orange-600",
-      context: " A mid-tier industrial supplier, specializing in engineered metal components, needed ISO 14067-aligned cradle-to-gate Product Carbon Footprints (PCFs) for a portfolio of 11 semi-finished products. The goal was twofold: meet increasing OEM disclosure demands and identify internal cost-reduction opportunities through decarbonization.",
-      findings: "The project delivered verified PCFs within eight weeks, focusing on mass-balancing and high-quality secondary datasets to address data gaps. While initial data coverage was low, it was rapidly expanded to provide high-fidelity results. The analysis pinpointed the single largest hotspot: an inefficient energy recovery system in a high-temperature finishing process.",
-      impact: "By optimizing the identified hotspot, the supplier realized a measurable carbon reduction on a priority product stream, directly linked to significant energy savings and lower operating costs. Furthermore, the robust, verified data enabled the supplier to present a compelling narrative, resulting in first-pass OEM acceptance with zero corrective actions. The supplier successfully demonstrated a competitive advantage, proving their components hold a lower carbon intensity than key market competitors."
-    },
-    {
-      id: "case-2",
-      icon: <Users className="h-6 w-6" />,
-      tag: "Scope 3 Emissions",
-      title: "Scope 3 Accounting & Supplier Engagement",
-      gradient: "from-emerald-500 to-teal-600",
-      context: "A global manufacturing player committed to the Science Based Targets initiative (SBTi) but lacked granular visibility into its supply chain (Scope 3), which accounted for >80% of total emissions. Reliance on spend-based estimates was masking critical hotspots and preventing actionable reduction strategies.",
-      findings: "We deployed a tiered supplier engagement strategy combined with a hybrid calculation methodology. Screening: Conducted a materiality assessment to identify the top suppliers contributing to 70% of emissions. Engagement: Launched a targeted data collection campaign, moving key suppliers from generic spend-based factors to physical intensity data (e.g., kgCO2e/kg product). Capacity Building: Delivered workshops to upskill suppliers on GHG accounting and roadmap creation.",
-      impact: "The transition to primary data identified that actual emissions were 22% lower/higher than initial estimates, allowing for a re-baselining of targets. The company successfully validated its near-term targets with the SBTi. Crucially, the program secured commitments from 65% of strategic suppliers to set their own renewable energy targets within 24 months, significantly de-risking the client's long-term transition plan."
-    },
-    {
-      id: "case-3",
-      icon: <Cpu className="h-6 w-6" />,
-      tag: "Critical Raw Materials",
-      title: "Critical Raw Materials Analysis for Gallium & Germanium",
-      gradient: "from-purple-500 to-indigo-600",
-      context: "High dependency on Gallium & Germanium for semiconductor/optical products. Supply chain critically vulnerable due to >90% concentration in a single region (China) and active export controls.",
-      findings: "Conducted deep-dive market analysis identifying single-source risks. Developed a 'China Plus One' multisourcing strategy and validated secondary supply streams via high-purity recycling.",
-      impact: "Mitigated immediate supply disruption risks. Avoided >40% spot market price surges and secured long-term compliance with critical mineral regulations."
-    }
+  const icons = [
+    <Factory key="1" className="h-6 w-6" />,
+    <Users key="2" className="h-6 w-6" />,
+    <Cpu key="3" className="h-6 w-6" />,
   ];
+  const gradients = ["from-amber-500 to-orange-600", "from-emerald-500 to-teal-600", "from-purple-500 to-indigo-600"];
+  const caseStudies = t.cases.items.map((item, i) => ({
+    id: `case-${i + 1}`,
+    icon: icons[i],
+    tag: item.tag,
+    title: item.title,
+    gradient: gradients[i],
+    context: item.context,
+    findings: item.project,
+    impact: item.impact,
+  }));
 
   return (
     <section id="case-studies" className="relative bg-white py-20 overflow-hidden">
@@ -91,13 +77,13 @@ export default function CaseStudiesSection() {
         >
           <div>
             <span className="inline-block px-6 py-3 rounded-full bg-emerald-100 text-emerald-700 text-2xl font-bold mb-4">
-              Success Stories
+              {t.cases.eyebrow}
             </span>
             <h2 className="text-5xl md:text-6xl font-bold text-slate-900">
-              Case Studies
+              {t.cases.title}
             </h2>
             <p className="mt-4 text-xl text-slate-600 max-w-xl">
-          Real-world examples of how our methods drive measurable outcomes.
+          {t.cases.intro}
         </p>
           </div>
 
@@ -163,15 +149,15 @@ export default function CaseStudiesSection() {
                 {/* Content */}
                 <div className="p-6 space-y-4">
                   <div>
-                    <h4 className="text-sm font-bold text-sky-600 uppercase tracking-wider mb-2">Context</h4>
+                    <h4 className="text-sm font-bold text-sky-600 uppercase tracking-wider mb-2">{t.cases.context}</h4>
                     <p className="text-base text-slate-700 leading-relaxed">{study.context}</p>
                   </div>
                   <div>
-                    <h4 className="text-sm font-bold text-amber-600 uppercase tracking-wider mb-2">Project & Findings</h4>
+                    <h4 className="text-sm font-bold text-amber-600 uppercase tracking-wider mb-2">{t.cases.project}</h4>
                     <p className="text-base text-slate-700 leading-relaxed">{study.findings}</p>
                   </div>
                   <div>
-                    <h4 className="text-sm font-bold text-emerald-600 uppercase tracking-wider mb-2">Impact</h4>
+                    <h4 className="text-sm font-bold text-emerald-600 uppercase tracking-wider mb-2">{t.cases.impact}</h4>
                     <p className="text-base text-slate-900 font-medium leading-relaxed">{study.impact}</p>
                   </div>
                 </div>

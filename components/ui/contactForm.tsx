@@ -1,14 +1,18 @@
 "use client";
 
 import React, { useState } from "react";
+import Link from "next/link";
+import { useI18n } from "@/lib/i18n";
 
 export default function ContactForm() {
+  const { t } = useI18n();
   const [status, setStatus] = useState<"idle" | "loading" | "done" | "error">("idle");
   const [message, setMessage] = useState("");
   const [consent, setConsent] = useState(false);
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    const form = e.currentTarget;
     setStatus("loading");
     setMessage("");
 
@@ -16,19 +20,25 @@ export default function ContactForm() {
     const payload = {
       name: String(fd.get("name") || "").trim(),
       email: String(fd.get("email") || "").trim(),
+      company: String(fd.get("company") || "").trim(),
       message: String(fd.get("message") || "").trim(),
     };
 
-    // Basic validation
     if (!payload.name || !payload.email || !payload.message) {
       setStatus("error");
-      setMessage("Please fill in all fields.");
+      setMessage(t.form.required);
+      return;
+    }
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(payload.email)) {
+      setStatus("error");
+      setMessage(t.form.invalidEmail);
       return;
     }
 
     if (!consent) {
       setStatus("error");
-      setMessage("Please accept the privacy policy to continue.");
+      setMessage(t.form.consentRequired);
       return;
     }
 
@@ -39,16 +49,18 @@ export default function ContactForm() {
         body: JSON.stringify(payload),
       });
 
-      if (!res.ok) throw new Error("Network response was not ok");
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error || "Network response was not ok");
+      }
 
       setStatus("done");
-      setMessage("Your message has been sent successfully!");
-      e.currentTarget.reset();
+      setMessage(t.form.success);
+      form.reset();
       setConsent(false);
     } catch (err) {
-      setStatus("done");
-      setMessage("Your message has been sent successfully!");
-      setConsent(false);
+      setStatus("error");
+      setMessage(t.form.error);
     }
   }
 
@@ -56,25 +68,29 @@ export default function ContactForm() {
     <form className="grid gap-3" onSubmit={onSubmit} noValidate>
       <input
         name="name"
-        placeholder="Name"
+        placeholder={t.form.name}
         required
         className="rounded-xl border border-slate-300 px-4 py-3 outline-none focus:ring-2 focus:ring-emerald-600"
       />
       <input
         type="email"
         name="email"
-        placeholder="Work email"
+        placeholder={t.form.email}
         required
+        className="rounded-xl border border-slate-300 px-4 py-3 outline-none focus:ring-2 focus:ring-emerald-600"
+      />
+      <input
+        name="company"
+        placeholder={t.form.company}
         className="rounded-xl border border-slate-300 px-4 py-3 outline-none focus:ring-2 focus:ring-emerald-600"
       />
       <textarea
         name="message"  
-        placeholder="What do you need help with?"
+        placeholder={t.form.message}
         required
         className="resize-none min-h-[80px] max-h-[200px] rounded-xl border border-slate-300 px-4 py-3 outline-none focus:ring-2 focus:ring-emerald-600"
       />
 
-      {/* GDPR Consent Checkbox */}
       <label className="flex items-start gap-2 text-base text-slate-600 cursor-pointer">
         <input
           type="checkbox"
@@ -83,10 +99,10 @@ export default function ContactForm() {
           className="mt-0.5 h-4 w-4 rounded border-slate-300 text-emerald-600 focus:ring-emerald-600 cursor-pointer"
         />
         <span>
-          I agree to the storage and processing of my data for the purpose of handling my request as outlined in the{" "}
-          <a href="/privacy" className="text-emerald-600 hover:text-emerald-700 underline">
-            Privacy Policy
-          </a>
+          {t.form.consent}{" "}
+          <Link href={t.form.privacyHref} className="text-emerald-600 hover:text-emerald-700 underline">
+            {t.form.privacy}
+          </Link>
           .
         </span>
       </label>
@@ -96,7 +112,7 @@ export default function ContactForm() {
         disabled={status === "loading"}
         className="rounded-xl bg-emerald-600 px-5 py-3 text-white hover:bg-emerald-700 disabled:opacity-60 transition-all"
       >
-        {status === "loading" ? "Sending..." : "Request a call"}
+        {status === "loading" ? t.form.sending : t.form.submit}
       </button>
 
       {message && (

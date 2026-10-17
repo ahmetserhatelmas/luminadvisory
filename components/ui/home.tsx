@@ -5,37 +5,39 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight, Sparkles, Shield, TrendingUp, Leaf } from 'lucide-react';
+import { useI18n } from '@/lib/i18n';
 
 export default function HeroSection() {
+  const { t } = useI18n();
   const serviceItems = [
     {
       id: 'pillar-climate-change',
-      title: 'Climate Strategy & Decarbonization',
-      desc: 'GHG Accounting · Decarbonization · Climate Risk Assessment',
+      title: t.pillars.climate.title,
+      desc: t.pillars.climate.tags,
       icon: <TrendingUp className="h-5 w-5" />,
       color: 'from-amber-500 to-orange-600',
       bgColor: 'bg-gradient-to-br from-amber-900/40 to-orange-900/40',
     },
     {
       id: 'pillar-sustainable-products',
-      title: 'Sustainable Products',
-      desc: 'LCA, PCF and verification services',
+      title: t.pillars.products.title,
+      desc: t.pillars.products.tags,
       icon: <Leaf className="h-5 w-5" />,
       color: 'from-emerald-500 to-teal-600',
       bgColor: 'bg-gradient-to-br from-emerald-900/40 to-teal-900/40',
     },
     {
       id: 'pillar-critical-raw',
-      title: 'Critical Raw Materials Intelligence',
-      desc: 'CRM Supply & Demand · Sourcing',
+      title: t.pillars.crm.title,
+      desc: t.pillars.crm.tags,
       icon: <Sparkles className="h-5 w-5" />,
       color: 'from-purple-500 to-indigo-600',
       bgColor: 'bg-gradient-to-br from-purple-900/40 to-indigo-900/40',
     },
     {
       id: 'pillar-esg-strategy',
-      title: 'ESG Strategy & Regulatory Alignment',
-      desc: 'EU Regulation; CSRD, CBAM, CSDDD, ESPR',
+      title: t.pillars.esg.title,
+      desc: t.pillars.esg.tags,
       icon: <Shield className="h-5 w-5" />,
       color: 'from-sky-500 to-blue-600',
       bgColor: 'bg-gradient-to-br from-sky-900/40 to-blue-900/40',
@@ -68,7 +70,7 @@ export default function HeroSection() {
               className="inline-flex items-center gap-2 rounded-full bg-emerald-500/20 border border-emerald-500/30 px-6 py-3 text-2xl text-emerald-300 mb-6"
             >
               <Sparkles className="h-6 w-6" />
-              <span className="font-bold">Science-Driven Sustainability Advisory</span>
+              <span className="font-bold">{t.hero.eyebrow}</span>
             </motion.div>
 
             <motion.h1
@@ -77,8 +79,8 @@ export default function HeroSection() {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight text-white"
             >
-              Turn Ambition into{' '}
-              <span className="text-gradient">Impact</span>
+              {t.hero.title.split(' ').slice(0, -1).join(' ')}{' '}
+              <span className="text-gradient">{t.hero.title.split(' ').slice(-1)}</span>
             </motion.h1>
 
             <motion.p
@@ -87,7 +89,7 @@ export default function HeroSection() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="mt-6 text-xl sm:text-2xl text-slate-300 max-w-xl mx-auto lg:mx-0"
             >
-Lumin Advisory empowers businesses to navigate complex ESG landscapes with confidence. We provide rigorous, science-driven advisory services that bridge the gap between ambitious targets and tangible, data-backed outcomes.
+{t.hero.text}
             </motion.p>
 
             <motion.div
@@ -100,14 +102,14 @@ Lumin Advisory empowers businesses to navigate complex ESG landscapes with confi
                 href="#pillars"
                 className="group inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-500 px-6 py-4 text-white font-semibold hover:bg-emerald-400 transition-all shadow-lg shadow-emerald-500/30 hover:shadow-emerald-500/50"
               >
-                Explore Our Services
+                {t.hero.ctaPrimary}
                 <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link
                 href="#contact"
                 className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/30 bg-white/10 backdrop-blur px-6 py-4 text-white font-semibold hover:bg-white/20 transition-all"
               >
-                Get a Proposal
+                {t.hero.ctaSecondary}
               </Link>
             </motion.div>
 
@@ -128,10 +130,10 @@ Lumin Advisory empowers businesses to navigate complex ESG landscapes with confi
               className="sm:col-span-2 rounded-2xl bg-white/5 backdrop-blur border border-white/20 p-6 mb-2"
             >
               <h3 className="text-2xl font-bold text-white mb-3">
-                Technical Depth. Strategic Focus.
+                {t.hero.cardTitle}
               </h3>
               <p className="text-lg text-slate-300 leading-relaxed">
-                We turn rigorous ESG data into clear, actionable strategy—giving decision-givers the confidence they need to drive value.
+                {t.hero.cardText}
               </p>
             </motion.div>
 
@@ -161,7 +163,7 @@ Lumin Advisory empowers businesses to navigate complex ESG landscapes with confi
                 </p>
 
                 <div className="mt-3 flex items-center gap-1 text-emerald-400 text-base opacity-0 group-hover:opacity-100 transition-opacity">
-                  <span>Learn more</span>
+                  <span>{t.pillars.learnMore}</span>
                   <ArrowRight className="h-4 w-4" />
                 </div>
               </motion.a>

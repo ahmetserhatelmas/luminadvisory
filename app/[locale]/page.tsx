@@ -1,8 +1,8 @@
 'use client';
 import React from "react";
 import Link from "next/link";
-import ContactForm from "../components/ui/contactForm";
-import CaseStudiesSection from "../components/ui/caseStudies";
+import ContactForm from "@/components/ui/contactForm";
+import CaseStudiesSection from "@/components/ui/caseStudies";
 import Header from "@/components/ui/header";  
 import About from "@/components/ui/about";
 import ServicePillars from "@/components/ui/servicePillars";
@@ -18,9 +18,11 @@ import WhereWeWork from "@/components/ui/whereWeWork";
 import Image from "next/image";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import { useI18n } from "@/lib/i18n";
 
 
 export default function Page() {
+  const { t } = useI18n();
   return (
     <main className="min-h-screen bg-white text-slate-900">
       <link rel="icon" type="image/x-icon" href="/icon.ico" />
@@ -74,13 +76,13 @@ export default function Page() {
             {/* Left - Text */}
             <div>
               <span className="inline-block px-6 py-3 rounded-full bg-emerald-500/20 text-emerald-400 text-2xl font-bold mb-4">
-                Get in Touch
+                {t.contact.eyebrow}
               </span>
               <h2 className="text-5xl md:text-6xl font-bold text-white mb-6">
-                Start the Conversation
+                {t.contact.title}
               </h2>
               <p className="text-xl text-slate-300 mb-8">
-                Tell us your immediate challenge—whether it&apos;s achieving CSRD readiness, delivering a compliant LCA, or building a Scope 3 strategy—and we will reply with a concise plan and timeline.
+                {t.contact.text}
               </p>
               
               {/* Contact Info */}
@@ -92,7 +94,7 @@ export default function Page() {
                     </svg>
                   </div>
                   <div>
-                    <p className="text-base text-slate-400">Email us at</p>
+                    <p className="text-base text-slate-400">{t.contact.emailLabel}</p>
                     <p className="text-white font-medium">hello@luminsustainability.com</p>
                   </div>
                 </div>
@@ -104,8 +106,8 @@ export default function Page() {
                     </svg>
                   </div>
                   <div>
-                    <p className="text-base text-slate-400">Based in</p>
-                    <p className="text-white font-medium">Berlin · Rotterdam · Istanbul</p>
+                    <p className="text-base text-slate-400">{t.contact.locationLabel}</p>
+                    <p className="text-white font-medium">{t.contact.location}</p>
                   </div>
                 </div>
               </div>

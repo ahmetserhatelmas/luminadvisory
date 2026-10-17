@@ -1,14 +1,18 @@
+'use client';
+
 import React from "react";
 import Image from "next/image";
 import { Users, GraduationCap, Briefcase } from "lucide-react";
+import { useI18n } from "@/lib/i18n";
 
 export default function WhoWeAre() {
+  const { t } = useI18n();
   return (
     <section id="who-we-are" className="border-t border-slate-200 bg-emerald-50 py-16">
       <div className="mx-auto max-w-7xl px-6">
-        <h2 className="text-5xl md:text-6xl font-bold text-center text-emerald-900 mb-4">Who We Are</h2>
+        <h2 className="text-5xl md:text-6xl font-bold text-center text-emerald-900 mb-4">{t.team.eyebrow}</h2>
         <p className="text-center text-2xl text-slate-700 mb-12 font-semibold">
-          We are Engineers, Scientists, and Strategists
+          {t.team.title}
         </p>
         
         <div className="grid md:grid-cols-2 gap-8 mb-12">
@@ -18,7 +22,7 @@ export default function WhoWeAre() {
                 <Users className="h-6 w-6" />
               </div>
               <p className="text-lg text-slate-700 leading-relaxed">
-                Lumin Advisory is not a traditional management consultancy. We are a technical collective built to solve the physical and regulatory challenges of the sustainable transition.
+                {t.team.text1}
               </p>
             </div>
           </div>
@@ -29,10 +33,7 @@ export default function WhoWeAre() {
                 <Briefcase className="h-6 w-6" />
               </div>
               <p className="text-lg text-slate-700 leading-relaxed">
-                Our team brings together distinct disciplines that rarely sit at the same table: chemical 
-                engineering, environmental data science, supply chain operations, and corporate strategy. 
-                This cross-disciplinary approach allows us to speak the language of your R&D team and your 
-                Board of Directors. We partner with experts as needed by the contracting projects.
+                {t.team.text2}
               </p>
             </div>
           </div>
@@ -60,27 +61,29 @@ export default function WhoWeAre() {
                   <GraduationCap className="h-7 w-7" />
                 </div>
                 <div>
-                  <h3 className="text-3xl font-bold text-emerald-900">Managing Partner / Lead Scientist</h3>
-                  <p className="text-xl text-emerald-700 font-semibold">Dr. Arda Işıldar</p>
+                  <h3 className="text-3xl font-bold text-emerald-900">{t.profile.role}</h3>
+                  <p className="text-xl text-emerald-700 font-semibold">{t.profile.name}</p>
                 </div>
               </div>
               
               <div className="space-y-3 text-slate-700 leading-relaxed text-base md:text-lg">
-            <p>
-              Arda is a technical strategist who architects sustainability roadmaps for complex industrial 
-              value chains. As the founder of Lumin Advisory, he advises corporate leaders on how to translate 
-              environmental science into operational resilience and regulatory compliance.
-            </p>
-            <p>
-              With a deep background in environmental engineering and circular economy modeling, Arda moves 
-              beyond high-level pledges to deliver the mathematical backbone of sustainability. He specializes 
-              in Critical Raw Materials (CRM) governance and Life Cycle Assessment (LCA), helping companies 
-              quantify risks that sit deep within their supply chains—from resource scarcity to carbon pricing exposure.
-            </p>
+            <p>{t.profile.bio1}</p>
+            <p>{t.profile.bio2}</p>
                 <p className="text-base text-slate-600 pt-4 border-t border-slate-200">
-                  <span className="font-semibold">Education:</span> Joint PhD in Environmental Technology (IHE Delft, TU Delft, Université Paris-Est)
+                  {t.profile.education}
                   <br/>
-                  <span className="font-semibold">Publications:</span> Editor of <em>Critical Materials and Sustainability Transition</em> (CRC Press)
+                  {t.profile.publications}
+                  <br/>
+                  {t.profile.roles}
+                  <br/>
+                  <a
+                    href="https://www.linkedin.com/company/luminadvisory/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-emerald-700 underline"
+                  >
+                    {t.profile.linkedin}
+                  </a>
                 </p>
               </div>
             </div>

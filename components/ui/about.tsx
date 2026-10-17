@@ -3,34 +3,28 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Search, Calculator, Route, CheckCircle, ArrowRight } from "lucide-react";
+import { useI18n } from "@/lib/i18n";
 
 export default function About() {
-  const steps = [
-    {
-      icon: <Search className="h-6 w-6" />,
-      title: "DIAGNOSE",
-      blurb: "Define the landscape. We clarify your sustainability goals, identify material risks, and map your policy exposure.",
-      color: "from-amber-500 to-orange-600"
-    },
-    {
-      icon: <Calculator className="h-6 w-6" />,
-      title: "QUANTIFY",
-      blurb: "Model the metrics. We build LCA/PCF, GHG baselines, and Critical Raw Material (CRM) & circularity models using best-available data.",
-      color: "from-emerald-500 to-teal-600"
-    },
-    {
-      icon: <Route className="h-6 w-6" />,
-      title: "DECIDE",
-      blurb: "Build the roadmap. We turn complex data into strategy—identifying abatement levers, calculating cost/impact trade-offs.",
-      color: "from-sky-500 to-blue-600"
-    },
-    {
-      icon: <CheckCircle className="h-6 w-6" />,
-      title: "VERIFY",
-      blurb: "Prove the value. We package audit-ready evidence for customers and tenders (EPD, ESRS, and Green Claims compliant).",
-      color: "from-purple-500 to-indigo-600"
-    }
+  const { t } = useI18n();
+  const icons = [
+    <Search key="1" className="h-6 w-6" />,
+    <Calculator key="2" className="h-6 w-6" />,
+    <Route key="3" className="h-6 w-6" />,
+    <CheckCircle key="4" className="h-6 w-6" />,
   ];
+  const colors = [
+    "from-amber-500 to-orange-600",
+    "from-emerald-500 to-teal-600",
+    "from-sky-500 to-blue-600",
+    "from-purple-500 to-indigo-600",
+  ];
+  const steps = t.approach.steps.map((step, i) => ({
+    icon: icons[i],
+    title: step.title,
+    blurb: step.text,
+    color: colors[i],
+  }));
 
   return (
     <section id="how-we-work" className="relative bg-gradient-to-br from-emerald-900 via-emerald-800 to-teal-900 py-20 overflow-hidden">
@@ -55,13 +49,13 @@ export default function About() {
           className="text-center mb-16"
         >
           <span className="inline-block px-6 py-3 rounded-full bg-white/10 text-emerald-300 text-2xl font-bold mb-4">
-            Our Methodology
+            {t.approach.eyebrow}
           </span>
           <h2 className="text-5xl md:text-6xl font-bold text-white mb-4">
-            How We Work
+            {t.approach.title}
           </h2>
           <p className="text-xl text-emerald-100 max-w-3xl mx-auto">
-            We bring science into decision-making. Lumin exists to close the gap between rigorous environmental analytics and real-world business choices. We provide data-backed insights and domain expertise, empowering you to make robust, auditable decisions—faster, with less risk, and more impact.
+            {t.approach.text}
           </p>
         </motion.div>
 
@@ -74,7 +68,7 @@ export default function About() {
           className="text-center mb-12"
         >
           <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-white/10 backdrop-blur border border-white/20">
-            <span className="text-2xl font-bold text-white">The Lumin Framework</span>
+            <span className="text-2xl font-bold text-white">{t.approach.framework}</span>
           </div>
         </motion.div>
 
@@ -136,7 +130,7 @@ export default function About() {
             href="#contact"
             className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-emerald-500 text-white font-semibold hover:bg-emerald-400 transition-all shadow-xl hover:shadow-2xl"
           >
-            Start Your Journey
+            {t.approach.cta}
             <ArrowRight className="h-5 w-5" />
           </a>
         </motion.div>
